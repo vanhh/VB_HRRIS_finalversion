@@ -525,7 +525,7 @@ Partial Class frmBooking
         'btnDelete
         '
         Me.btnDelete.BackColor = System.Drawing.SystemColors.Control
-        Me.btnDelete.Location = New System.Drawing.Point(710, 306)
+        Me.btnDelete.Location = New System.Drawing.Point(710, 301)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(100, 30)
         Me.btnDelete.TabIndex = 19
@@ -535,7 +535,7 @@ Partial Class frmBooking
         'btnUpdate
         '
         Me.btnUpdate.BackColor = System.Drawing.SystemColors.Control
-        Me.btnUpdate.Location = New System.Drawing.Point(710, 219)
+        Me.btnUpdate.Location = New System.Drawing.Point(710, 201)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(100, 30)
         Me.btnUpdate.TabIndex = 18
@@ -634,14 +634,14 @@ Partial Class frmBooking
         'HomeToolStripMenuItem
         '
         Me.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.HomeToolStripMenuItem.Text = "New"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RoomManagementToolStripMenuItem, Me.BookingManagementToolStripMenuItem, Me.ReportManagementToolStripMenuItem, Me.HomeToolStripMenuItem1})
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem.Text = "Open"
         '
         'RoomManagementToolStripMenuItem
@@ -671,7 +671,7 @@ Partial Class frmBooking
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'ReportToolStripMenuItem

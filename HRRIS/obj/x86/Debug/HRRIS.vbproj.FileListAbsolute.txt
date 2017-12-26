@@ -158,3 +158,19 @@ E:\VA\bachelor\sem 7\VB\ám 2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.vbproj.CoreCompile
 E:\VA\bachelor\sem 7\VB\ám 2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.exe
 E:\VA\bachelor\sem 7\VB\ám 2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.xml
 E:\VA\bachelor\sem 7\VB\ám 2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.pdb
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\bin\Debug\HRRIS.exe.config
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\bin\Debug\HRRIS.exe
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\bin\Debug\HRRIS.pdb
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\bin\Debug\HRRIS.xml
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.vbprojResolveAssemblyReference.cache
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmBooking.resources
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmReport.resources
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmCustomer.resources
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmRoom.resources
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmHome.resources
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.Resources.resources
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.vbproj.GenerateResource.Cache
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.vbproj.CoreCompileInputs.cache
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.exe
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.xml
+E:\VA\bachelor\sem 7\VB\asm2\HRRIS\HRRIS\obj\x86\Debug\HRRIS.pdb
