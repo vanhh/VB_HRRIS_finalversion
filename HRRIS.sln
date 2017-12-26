@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HRRIS", "HRRIS\HRRIS.vbproj", "{A124905C-B273-4ED8-B51F-3DAF3E608386}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A124905C-B273-4ED8-B51F-3DAF3E608386}.Debug|x86.ActiveCfg = Debug|x86
+		{A124905C-B273-4ED8-B51F-3DAF3E608386}.Debug|x86.Build.0 = Debug|x86
+		{A124905C-B273-4ED8-B51F-3DAF3E608386}.Release|x86.ActiveCfg = Release|x86
+		{A124905C-B273-4ED8-B51F-3DAF3E608386}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E413159F-3B2A-4BA9-B65A-39DE15DB15DD}
+	EndGlobalSection
+EndGlobal
