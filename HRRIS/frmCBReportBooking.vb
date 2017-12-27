@@ -187,4 +187,9 @@ Public Class frmReport
             Me.Show()
         End If
     End Sub
+
+    Private Sub btnInvoice_Click(sender As Object, e As EventArgs) Handles btnInvoice.Click
+        Dim rController As ReportController = New ReportController
+        rController.createInvoiceReport()
+    End Sub
 End Class

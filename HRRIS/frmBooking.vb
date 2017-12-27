@@ -32,31 +32,36 @@ Public Class frmBooking
     Private Sub btnInsert_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsert.Click
         Dim htData As Hashtable = New Hashtable
         Dim bAllValid = validateFormData()
-        If bAllValid Then
-            htData("RoomID") = txtRoomID.Text
-            htData("CustomerNo") = txtBookingCustomer.Text
-            htData("BookingDate") = dtBookingDate.Text()
-            htData("CheckinDate") = dtCheckin.Text
-            htData("CheckoutDate") = dtCheckout.Text
-            htData("DaysNumber") = txtDayNo.Text
-            htData("GuestNo") = txtGuestNo.Text
-            htData("Total") = txtTotal.Text
-            htData("Comments") = txtComments.Text
 
-            Dim oBookingController As BookingController = New BookingController()
+        bNotEmpty = oValidation.isEmpty(txtBookingID.Text)
+        If bNotEmpty = False Then
+            If bAllValid Then
+                htData("RoomID") = txtRoomID.Text
+                htData("CustomerNo") = txtBookingCustomer.Text
+                htData("BookingDate") = dtBookingDate.Text()
+                htData("CheckinDate") = dtCheckin.Text
+                htData("CheckoutDate") = dtCheckout.Text
+                htData("DaysNumber") = txtDayNo.Text
+                htData("GuestNo") = txtGuestNo.Text
+                htData("Total") = txtTotal.Text
+                htData("Comments") = txtComments.Text
 
-            Dim iNumRows = oBookingController.insert(htData)
-            Debug.Print(CStr(iNumRows))
+                Dim iNumRows = oController.insert(htData)
+                Debug.Print(CStr(iNumRows))
 
-            If iNumRows > 0 Then
-                Dim clear = clearField()
-                If clear Then
-                    Debug.Print("all field was cleared")
+                If iNumRows > 0 Then
+                    Dim clear = clearField()
+                    If clear Then
+                        Debug.Print("all field was cleared")
+                    End If
                 End If
+            Else
+                'Do nothing
             End If
         Else
-            'Do nothing
+            MsgBox("This booking is already in the database")
         End If
+
     End Sub
 
     'update button - update record info to database
@@ -76,9 +81,7 @@ Public Class frmBooking
             htData("Comments") = txtComments.Text
             htData("BookingID") = txtBookingID.Text
 
-            Dim oBookingController As BookingController = New BookingController()
-
-            Dim iNumRows = oBookingController.update(htData)
+            Dim iNumRows = oController.update(htData)
             Debug.Print(CStr(iNumRows))
 
             If iNumRows > 0 Then
@@ -96,7 +99,6 @@ Public Class frmBooking
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
 
         If MsgBox("Are you sure you want to delete? You can't undo this action", MsgBoxStyle.YesNo, "Delete Confirmation") = MsgBoxResult.Yes Then
-            Dim oController As BookingController = New BookingController
             Dim htData As Hashtable = New Hashtable
             htData("BookingID") = txtBookingID.Text
             Dim iNumRows = oController.delete(htData)
@@ -112,28 +114,50 @@ Public Class frmBooking
     '--------------------------------
     'VALIDATION
 
-    'check checkout date
-    Private Sub dtCheckout_ValueChanged(sender As Object, e As EventArgs)
-        Dim days As Integer = CInt(DateDiff(DateInterval.DayOfYear, dtCheckin.Value, dtCheckout.Value)) + 1
-        If days <= 0 Then
-            MsgBox("Invalid checkout day")
-            dtCheckout.Value = Now
+    Private Function checkdate() As Boolean
+
+        Dim bAllFieldsValid As Boolean
+        bAllFieldsValid = True
+
+        'compare checkin - checkout date
+        Dim days As Integer = CInt(DateDiff(DateInterval.Day, dtCheckin.Value, dtCheckout.Value)) + 1
+
+        'compare checkin date - today
+        Dim day1 As Integer = CInt(DateDiff(DateInterval.Day, Now(), dtCheckin.Value))
+
+        'compare checkin - booking date
+        Dim day2 As Integer = CInt(DateDiff(DateInterval.Day, dtBookingDate.Value, dtCheckin.Value))
+
+        Debug.Print(CStr(dtCheckin.Value))
+        Debug.Print(CStr(dtCheckout.Value))
+        Debug.Print("in-out" + CStr(days))
+
+        If day1 >= 0 And day2 >= 0 Then
+            If days < 1 Then
+                MsgBox("Invalid checkin and checkout day")
+                dtCheckin.Value = Now
+                dtCheckout.Value = Now
+                txtDayNo.Text = "1"
+                bAllFieldsValid = False
+            ElseIf days > 90 Then
+                MsgBox("The maximum lenght of stay is 90 days")
+                dtCheckout.Value = Now
+                dtCheckin.Value = Now
+                txtDayNo.Text = "1"
+                bAllFieldsValid = False
+            Else
+                txtDayNo.Text = CStr(days)
+            End If
         Else
-            txtDayNo.Text = CStr(days)
-        End If
-
-    End Sub
-
-    'check checked in date
-    Private Sub dtCheckin_ValueChanged(sender As Object, e As EventArgs) Handles dtCheckin.ValueChanged
-        Dim days As Integer = CInt(DateDiff(DateInterval.DayOfYear, dtCheckin.Value, dtCheckout.Value)) + 1
-        If days <= 0 Then
             MsgBox("Invalid checkin day")
+            dtCheckout.Value = Now
             dtCheckin.Value = Now
-        Else
-            txtDayNo.Text = CStr(days)
+            dtBookingDate.Value = Now
+            txtDayNo.Text = "1"
+            bAllFieldsValid = False
         End If
-    End Sub
+        Return bAllFieldsValid
+    End Function
 
     'validate user's input for inserting them to the dtb
     Private Function validateFormData() As Boolean
@@ -220,6 +244,15 @@ Public Class frmBooking
             bAllFieldsValid = False
         End If
 
+        'check room number not empty
+        bNotEmpty = oValidation.isEmpty(cboRoomNumber.Text)
+        If bNotEmpty Then
+            errorRoomNo.Visible = False
+        Else
+            errorRoomNo.Visible = True
+            tt.SetToolTip(errorRoomNo, "Please select a room numver")
+            bAllFieldsValid = False
+        End If
         'all field valid
         If bAllFieldsValid Then
             Debug.Print("All fields are valid")
@@ -261,33 +294,52 @@ Public Class frmBooking
             Debug.Print("ERROR: ")
         End If
 
-        'disable navigation buttons
-        ' bNotEmpty = oValidation.isEmpty(txtBookingID.Text)
-        'If bNotEmpty = False Then
-        ' Else
+        'defaul value of checkin checkout date is the current day
+        dtCheckin.Value = Now()
+        dtCheckout.Value = Now()
+
         btnFirst.Enabled = False
         btnPrevious.Enabled = False
-            btnNext.Enabled = False
-            btnLast.Enabled = False
-        'End If
+        btnNext.Enabled = False
+        btnLast.Enabled = False
+        btnInvoice.Enabled = False
+
+
+        btnFindCustomer.Enabled = False
 
     End Sub
+
 
     'when user click Find button - >find available roomm based on the selected type, checkin checkout date
     Private Sub btnCheck_Click(sender As Object, e As EventArgs) Handles btnFindRoom.Click
 
-        cboRoomNumber.Items.Clear()
 
-        Dim oController As BookingController = New BookingController
-        Dim typeID = cboRoomType.Text
-        Dim requestedIn = dtCheckin.Value
-        Dim requestedOut = dtCheckout.Value
+        'check already select type
+        Dim oValidation As New Validation
 
+        Dim bNotEmpty As Boolean
 
-        Dim lsData2 = oController.findbyType(typeID, requestedIn, requestedOut)
-        For Each room In lsData2
-            cboRoomNumber.Items.Add(CStr(room("RoomNumber")))
-        Next
+        bNotEmpty = oValidation.isEmpty(cboRoomType.Text)
+        If bNotEmpty Then 'if yes, check checkin checkout date
+            Dim bAllValid = checkdate()
+            If bAllValid Then 'valid date ->find room
+
+                cboRoomNumber.Items.Clear()
+
+                Dim typeID = cboRoomType.Text
+                Dim requestedIn = dtCheckin.Value
+                Dim requestedOut = dtCheckout.Value
+
+                Dim lsData2 = oController.findbyType(typeID, requestedIn, requestedOut)
+                For Each room In lsData2
+                    cboRoomNumber.Items.Add(CStr(room("RoomNumber")))
+                Next
+            Else
+            End If
+        Else
+            MsgBox("Please select Room Type")
+        End If
+
     End Sub
 
     'auto update price and total to display on form
@@ -296,7 +348,6 @@ Public Class frmBooking
         Dim decDay As Integer
         Dim decPrice As Double
 
-        Dim oController As BookingController = New BookingController
         Dim RoomNo = cboRoomNumber.Text
 
         Dim lsData2 = oController.findbyRoomNo(RoomNo)
@@ -333,7 +384,6 @@ Public Class frmBooking
     'find customer profile based on entered first -  last name
     Private Sub btnFindCustomer_Click(sender As Object, e As EventArgs) Handles btnFindCustomer.Click
 
-        Dim oController As BookingController = New BookingController
         Dim FirstName = txtCustomerFN.Text
         Dim LastName = txtLastName.Text
 
@@ -382,6 +432,13 @@ Public Class frmBooking
         txtDayNo.Text = ""
 
         cboRoomType.Focus()
+
+        dtBookingDate.Enabled = True
+        dtCheckin.Enabled = True
+        dtCheckout.Enabled = True
+        cboRoomNumber.Enabled = True
+        cboRoomType.Enabled = True
+
         Return clearDone
     End Function
 
@@ -426,6 +483,13 @@ Public Class frmBooking
         cboRoomNumber.Text = CStr(booking("RoomNumber"))
 
         txtBookingID.Text = CStr(booking("BookingID"))
+
+        'disable edit mode : not allow user to edit these info, delete and insert a new record  instead
+        dtBookingDate.Enabled = False
+        dtCheckin.Enabled = False
+        dtCheckout.Enabled = False
+        cboRoomNumber.Enabled = False
+        cboRoomType.Enabled = False
 
     End Sub
 
@@ -495,6 +559,7 @@ Public Class frmBooking
         id = gridviewBooking.CurrentRow.Cells(0).Value.ToString()
 
         Dim lsdata = oController.getBookingInfo(id)
+
         iCurrentIndex = gridviewBooking.CurrentRow.Index
 
         For Each record In lsdata
@@ -584,6 +649,16 @@ Public Class frmBooking
         'disable navigation buttons
         bNotEmpty = oValidation.isEmpty(txtBookingID.Text)
         If bNotEmpty Then
+            btnFindRoom.Enabled = False
+            Dim id As String = txtBookingID.Text
+            Dim iData As List(Of Hashtable) = New List(Of Hashtable)
+            iData = oController.checkInvoice(id)
+            If iData.Count > 0 Then
+                btnInvoice.Enabled = False
+            Else
+                btnInvoice.Enabled = True
+            End If
+
             If search = False Then
                 mdata = oController.findAllBooking()
 
@@ -623,11 +698,13 @@ Public Class frmBooking
                 End If
             End If
         Else
+            btnInvoice.Enabled = False
             btnFirst.Enabled = False
             btnPrevious.Enabled = False
             btnNext.Enabled = False
             btnLast.Enabled = False
         End If
+
 
 
     End Sub
@@ -723,6 +800,71 @@ Public Class frmBooking
             btnFindCustomer.Enabled = False
         Else
             btnFindCustomer.Enabled = True
+        End If
+
+    End Sub
+
+    'print invoice click - generate invoice and insert to dtb
+    Private Sub btnInvoice_Click(sender As Object, e As EventArgs) Handles btnInvoice.Click
+        Dim htData As Hashtable = New Hashtable
+
+        htData("BookingID") = txtBookingID.Text
+        htData("Date") = Now()
+        htData("Amount") = txtTotal.Text
+        Dim iNumRows = oController.Invoice(htData)
+        Debug.Print(CStr(iNumRows))
+
+    End Sub
+
+    Private Sub cboRoomNumber_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboRoomNumber.SelectedIndexChanged
+        Dim decTotal As Double
+        Dim decDay As Integer
+        Dim decPrice As Double
+
+        Dim RoomNo = cboRoomNumber.Text
+
+        Dim lsData2 = oController.findbyRoomNo(RoomNo)
+
+        If lsData2.Count = 1 Then
+            populateFormField(lsData2(0))
+        End If
+
+        Double.TryParse(txtRoomPrice.Text, decPrice)
+        Integer.TryParse(txtDayNo.Text, decDay)
+        decTotal = decDay * decPrice
+        txtTotal.Text = Convert.ToString(decTotal)
+    End Sub
+
+    Private Sub gpbRoomInfo_Enter(sender As Object, e As EventArgs) Handles gpbRoomInfo.Enter
+
+    End Sub
+
+    Private Sub txtCustomerFN_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerFN.TextChanged
+        Dim NotEmpty = oValidation.isEmpty(txtCustomerFN.Text)
+        Dim NotEmpty2 = oValidation.isEmpty(txtLastName.Text)
+        If txtCustomerFN.Text = "" Then
+            btnFindCustomer.Enabled = False
+        Else
+            If (NotEmpty And NotEmpty2 = False) Then
+                btnFindCustomer.Enabled = False
+            Else
+                btnFindCustomer.Enabled = True
+            End If
+        End If
+
+    End Sub
+
+    Private Sub txtLastName_TextChanged(sender As Object, e As EventArgs) Handles txtLastName.TextChanged
+        Dim NotEmpty = oValidation.isEmpty(txtCustomerFN.Text)
+        Dim NotEmpty2 = oValidation.isEmpty(txtLastName.Text)
+        If txtLastName.Text = "" Then
+            btnFindCustomer.Enabled = False
+        Else
+            If NotEmpty = False And NotEmpty2 Then
+                btnFindCustomer.Enabled = False
+            Else
+                btnFindCustomer.Enabled = True
+            End If
         End If
 
     End Sub

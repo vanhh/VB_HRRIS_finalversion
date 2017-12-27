@@ -89,6 +89,7 @@ Partial Class frmBooking
         Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnInvoice = New System.Windows.Forms.Button()
         Me.gpbRoomInfo.SuspendLayout()
         CType(Me.errorRoomNo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbBookingInfo.SuspendLayout()
@@ -132,7 +133,7 @@ Partial Class frmBooking
         Me.cboRoomNumber.Location = New System.Drawing.Point(111, 147)
         Me.cboRoomNumber.Name = "cboRoomNumber"
         Me.cboRoomNumber.Size = New System.Drawing.Size(120, 21)
-        Me.cboRoomNumber.TabIndex = 54
+        Me.cboRoomNumber.TabIndex = 5
         '
         'dtCheckout
         '
@@ -140,7 +141,7 @@ Partial Class frmBooking
         Me.dtCheckout.Location = New System.Drawing.Point(111, 106)
         Me.dtCheckout.Name = "dtCheckout"
         Me.dtCheckout.Size = New System.Drawing.Size(120, 20)
-        Me.dtCheckout.TabIndex = 53
+        Me.dtCheckout.TabIndex = 3
         '
         'lbCheckout
         '
@@ -175,7 +176,7 @@ Partial Class frmBooking
         Me.btnFindRoom.Location = New System.Drawing.Point(246, 28)
         Me.btnFindRoom.Name = "btnFindRoom"
         Me.btnFindRoom.Size = New System.Drawing.Size(44, 20)
-        Me.btnFindRoom.TabIndex = 2
+        Me.btnFindRoom.TabIndex = 4
         Me.btnFindRoom.Text = "Find"
         Me.btnFindRoom.UseVisualStyleBackColor = False
         '
@@ -211,7 +212,7 @@ Partial Class frmBooking
         Me.dtCheckin.Location = New System.Drawing.Point(111, 67)
         Me.dtCheckin.Name = "dtCheckin"
         Me.dtCheckin.Size = New System.Drawing.Size(120, 20)
-        Me.dtCheckin.TabIndex = 3
+        Me.dtCheckin.TabIndex = 2
         '
         'lbDaysNo
         '
@@ -280,14 +281,14 @@ Partial Class frmBooking
         Me.dtBookingDate.Location = New System.Drawing.Point(111, 146)
         Me.dtBookingDate.Name = "dtBookingDate"
         Me.dtBookingDate.Size = New System.Drawing.Size(120, 20)
-        Me.dtBookingDate.TabIndex = 11
+        Me.dtBookingDate.TabIndex = 9
         '
         'txtComments
         '
         Me.txtComments.Location = New System.Drawing.Point(111, 226)
         Me.txtComments.Name = "txtComments"
         Me.txtComments.Size = New System.Drawing.Size(120, 20)
-        Me.txtComments.TabIndex = 13
+        Me.txtComments.TabIndex = 11
         Me.txtComments.Text = "No comments"
         '
         'txtBookingCustomer
@@ -296,14 +297,14 @@ Partial Class frmBooking
         Me.txtBookingCustomer.Location = New System.Drawing.Point(111, 106)
         Me.txtBookingCustomer.Name = "txtBookingCustomer"
         Me.txtBookingCustomer.Size = New System.Drawing.Size(120, 20)
-        Me.txtBookingCustomer.TabIndex = 10
+        Me.txtBookingCustomer.TabIndex = 0
         '
         'txtGuestNo
         '
         Me.txtGuestNo.Location = New System.Drawing.Point(111, 187)
         Me.txtGuestNo.Name = "txtGuestNo"
         Me.txtGuestNo.Size = New System.Drawing.Size(120, 20)
-        Me.txtGuestNo.TabIndex = 12
+        Me.txtGuestNo.TabIndex = 10
         '
         'btnInsert
         '
@@ -311,8 +312,8 @@ Partial Class frmBooking
         Me.btnInsert.Location = New System.Drawing.Point(710, 398)
         Me.btnInsert.Name = "btnInsert"
         Me.btnInsert.Size = New System.Drawing.Size(100, 30)
-        Me.btnInsert.TabIndex = 20
-        Me.btnInsert.Text = "OK"
+        Me.btnInsert.TabIndex = 15
+        Me.btnInsert.Text = "Insert"
         Me.btnInsert.UseVisualStyleBackColor = False
         '
         'btnClear
@@ -321,7 +322,7 @@ Partial Class frmBooking
         Me.btnClear.Location = New System.Drawing.Point(710, 119)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(100, 30)
-        Me.btnClear.TabIndex = 17
+        Me.btnClear.TabIndex = 12
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = False
         '
@@ -360,7 +361,7 @@ Partial Class frmBooking
         Me.txtBookingID.Location = New System.Drawing.Point(197, 267)
         Me.txtBookingID.Name = "txtBookingID"
         Me.txtBookingID.Size = New System.Drawing.Size(70, 20)
-        Me.txtBookingID.TabIndex = 58
+        Me.txtBookingID.TabIndex = 0
         Me.txtBookingID.Visible = False
         '
         'errorBookingDate
@@ -409,7 +410,7 @@ Partial Class frmBooking
         Me.btnFindCustomer.Location = New System.Drawing.Point(246, 66)
         Me.btnFindCustomer.Name = "btnFindCustomer"
         Me.btnFindCustomer.Size = New System.Drawing.Size(40, 20)
-        Me.btnFindCustomer.TabIndex = 7
+        Me.btnFindCustomer.TabIndex = 8
         Me.btnFindCustomer.Text = "Find"
         Me.btnFindCustomer.UseVisualStyleBackColor = False
         '
@@ -434,7 +435,7 @@ Partial Class frmBooking
         Me.txtLastName.Location = New System.Drawing.Point(111, 66)
         Me.txtLastName.Name = "txtLastName"
         Me.txtLastName.Size = New System.Drawing.Size(120, 20)
-        Me.txtLastName.TabIndex = 9
+        Me.txtLastName.TabIndex = 7
         '
         'lbLastName
         '
@@ -530,7 +531,7 @@ Partial Class frmBooking
         Me.btnDelete.Location = New System.Drawing.Point(710, 301)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(100, 30)
-        Me.btnDelete.TabIndex = 19
+        Me.btnDelete.TabIndex = 14
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = False
         '
@@ -540,7 +541,7 @@ Partial Class frmBooking
         Me.btnUpdate.Location = New System.Drawing.Point(710, 215)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(100, 30)
-        Me.btnUpdate.TabIndex = 18
+        Me.btnUpdate.TabIndex = 13
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = False
         '
@@ -558,7 +559,7 @@ Partial Class frmBooking
         Me.txtSearch.Location = New System.Drawing.Point(710, 511)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(100, 20)
-        Me.txtSearch.TabIndex = 14
+        Me.txtSearch.TabIndex = 21
         '
         'gridviewBooking
         '
@@ -577,7 +578,7 @@ Partial Class frmBooking
         Me.btnLast.Location = New System.Drawing.Point(429, 438)
         Me.btnLast.Name = "btnLast"
         Me.btnLast.Size = New System.Drawing.Size(44, 25)
-        Me.btnLast.TabIndex = 71
+        Me.btnLast.TabIndex = 19
         Me.btnLast.Text = ">|"
         Me.btnLast.UseVisualStyleBackColor = True
         '
@@ -586,7 +587,7 @@ Partial Class frmBooking
         Me.btnNext.Location = New System.Drawing.Point(358, 438)
         Me.btnNext.Name = "btnNext"
         Me.btnNext.Size = New System.Drawing.Size(44, 25)
-        Me.btnNext.TabIndex = 70
+        Me.btnNext.TabIndex = 18
         Me.btnNext.Text = ">"
         Me.btnNext.UseVisualStyleBackColor = True
         '
@@ -595,7 +596,7 @@ Partial Class frmBooking
         Me.btnFirst.Location = New System.Drawing.Point(232, 438)
         Me.btnFirst.Name = "btnFirst"
         Me.btnFirst.Size = New System.Drawing.Size(44, 25)
-        Me.btnFirst.TabIndex = 69
+        Me.btnFirst.TabIndex = 16
         Me.btnFirst.Text = "|<"
         Me.btnFirst.UseVisualStyleBackColor = True
         '
@@ -604,7 +605,7 @@ Partial Class frmBooking
         Me.btnPrevious.Location = New System.Drawing.Point(291, 438)
         Me.btnPrevious.Name = "btnPrevious"
         Me.btnPrevious.Size = New System.Drawing.Size(44, 25)
-        Me.btnPrevious.TabIndex = 68
+        Me.btnPrevious.TabIndex = 17
         Me.btnPrevious.Text = "<"
         Me.btnPrevious.UseVisualStyleBackColor = True
         '
@@ -613,7 +614,7 @@ Partial Class frmBooking
         Me.btnRefresh.Location = New System.Drawing.Point(710, 601)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(100, 30)
-        Me.btnRefresh.TabIndex = 72
+        Me.btnRefresh.TabIndex = 22
         Me.btnRefresh.Text = "Refresh  List"
         Me.btnRefresh.UseVisualStyleBackColor = True
         '
@@ -707,12 +708,23 @@ Partial Class frmBooking
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
         '
+        'btnInvoice
+        '
+        Me.btnInvoice.BackColor = System.Drawing.SystemColors.Control
+        Me.btnInvoice.Location = New System.Drawing.Point(583, 438)
+        Me.btnInvoice.Name = "btnInvoice"
+        Me.btnInvoice.Size = New System.Drawing.Size(100, 30)
+        Me.btnInvoice.TabIndex = 20
+        Me.btnInvoice.Text = "Print Invoice"
+        Me.btnInvoice.UseVisualStyleBackColor = False
+        '
         'frmBooking
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(835, 646)
+        Me.Controls.Add(Me.btnInvoice)
         Me.Controls.Add(Me.BookingStrip)
         Me.Controls.Add(Me.btnRefresh)
         Me.Controls.Add(Me.btnLast)
@@ -817,4 +829,5 @@ Partial Class frmBooking
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ReportToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents InvoiceToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btnInvoice As Button
 End Class

@@ -814,7 +814,7 @@ Partial Class frmReport
         '
         Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Home, Me.CustomerManagementToolStripMenuItem, Me.RoomManagementToolStripMenuItem, Me.BookingManagementToolStripMenuItem})
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem.Text = "Open"
         '
         'Home
@@ -844,7 +844,7 @@ Partial Class frmReport
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'ReportToolStripMenuItem

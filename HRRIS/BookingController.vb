@@ -3,7 +3,7 @@ Option Strict On
 
 'Student Name: Pham Tran Van Anh
 'student id:s3557184
-'Description: 2017C- Assignment 1 
+'Description: 2017C- HRRIS Project
 'file name: Booking Controller
 
 Imports System.Data.OleDb
@@ -263,7 +263,7 @@ Public Class BookingController
             oCommand.Parameters("room_number").Value = CInt(RoomNo)
             oCommand.Prepare()
             Dim oDataReader = oCommand.ExecuteReader()
-
+            Debug.Print(oCommand.CommandText)
             Dim htTempData As Hashtable
             Do While oDataReader.Read() = True
                 htTempData = New Hashtable
@@ -610,6 +610,91 @@ Public Class BookingController
 
         Return lsData
 
+    End Function
+
+    'check this booking has invoice or not
+    Public Function checkInvoice(id As String) As List(Of Hashtable)
+
+        Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
+        Dim lsData As New List(Of Hashtable)
+
+        Try
+            Debug.Print("Connection string: " & oConnection.ConnectionString)
+
+            oConnection.Open()
+            Dim oCommand As OleDbCommand = New OleDbCommand
+            oCommand.Connection = oConnection
+
+            oCommand.CommandText =
+                    "SELECT booking_id from invoice where booking_id=?;"
+
+            oCommand.Parameters.Add("bookingID", OleDbType.Integer, 8)
+            oCommand.Parameters("bookingID").Value = CInt(id)
+            oCommand.Prepare()
+            Dim oDataReader = oCommand.ExecuteReader()
+
+            Debug.Print(oCommand.CommandText)
+            Dim htTempData As Hashtable
+            Do While oDataReader.Read() = True
+                htTempData = New Hashtable
+
+                htTempData("ID") = CStr(oDataReader("booking_id"))
+
+                lsData.Add(htTempData)
+            Loop
+            Debug.Print("The invoice were found.")
+
+        Catch ex As Exception
+            Debug.Print("ERROR: " & ex.Message)
+            MsgBox("An error occurred")
+
+        Finally
+            oConnection.Close()
+        End Try
+
+        Return lsData
+
+    End Function
+    'insert invoice to dtb
+
+    Public Function Invoice(ByVal htData As Hashtable) As Integer
+        Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
+        Dim iNumRows As Integer
+
+        Try
+            Debug.Print("Connection string: " & oConnection.ConnectionString)
+            oConnection.Open()
+            Dim oCommand As OleDbCommand = New OleDbCommand
+            oCommand.Connection = oConnection
+
+            oCommand.CommandText = "Insert into invoice (booking_id,invoice_date,amount) values (?,?,?)"
+
+            oCommand.Parameters.Add("BookingID", OleDbType.Integer, 10)
+            oCommand.Parameters.Add("Date", OleDbType.DBDate)
+            oCommand.Parameters.Add("Amount", OleDbType.Double, 8)
+
+            oCommand.Parameters("BookingID").Value = CInt(htData("BookingID"))
+            oCommand.Parameters("Date").Value = CDate(htData("Date"))
+            oCommand.Parameters("Amount").Value = CDbl(htData("Amount"))
+
+
+            oCommand.Prepare()
+            Debug.Print(oCommand.CommandText)
+            iNumRows = oCommand.ExecuteNonQuery()
+            Debug.Print(CStr(iNumRows))
+
+            Debug.Print("Invoice was inserted")
+            MessageBox.Show("Invoice was created.")
+
+        Catch ex As Exception
+            Debug.Print("ERROR: " & ex.Message)
+            MessageBox.Show("There is an error.Invoice was not created.Please check again")
+        Finally
+            oConnection.Close()
+
+        End Try
+
+        Return iNumRows
     End Function
 End Class
 

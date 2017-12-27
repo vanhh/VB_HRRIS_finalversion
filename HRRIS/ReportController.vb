@@ -902,7 +902,7 @@ Public Class ReportController
         Dim sHtmlStartTag As String = "<html lang=""en"">"
         Dim sHeadTitle As String = "<head><title>" & sReportTitle & "</title></head>"
         Dim sBodyStartTag As String = "<body>"
-        Dim sReportHeading As String = "</h1>" & sReportTitle & "</h1>"
+        Dim sReportHeading As String = "<h1>" & sReportTitle & "</h1>"
         sReportContent = sDoctype & vbCrLf & sHtmlStartTag & vbCrLf & sHeadTitle _
          & vbCrLf & sBodyStartTag & vbCrLf & sReportHeading & vbCrLf
 
@@ -1028,13 +1028,13 @@ Public Class ReportController
             oCommand.Connection = oConnection
             Dim sCmdText As String
             Dim month As String = "Month"
-            sCmdText = "SELECT booking_id,date,amount,"
+            sCmdText = "SELECT booking_id,invoice_date,amount,"
 
-            sCmdText += "month(date) "
-            ' sCmdText += " AS " & month
-            sCmdText += " FROM invoice where year(date)=Year(now()) order by month(date);"
+            sCmdText += "month(invoice_date) "
+
+            sCmdText += "FROM invoice where year(invoice_date)=Year(now()) order by month(invoice_date);"
             oCommand.CommandText = sCmdText
-            '  "SELECT booking_id,date, month(date) AS Month, amount FROM invoice where year(date)=Year(now()) order by month(date);"
+
             Debug.Print(oCommand.CommandText)
             oCommand.Prepare()
             Dim oDataReader = oCommand.ExecuteReader()
@@ -1043,9 +1043,9 @@ Public Class ReportController
             Do While oDataReader.Read() = True
                 htTempData = New Hashtable
                 htTempData("BookingID") = CStr(oDataReader("booking_id"))
-                htTempData("Date") = CStr(oDataReader("date"))
+                htTempData("Date") = CStr(oDataReader("invoice_date"))
                 htTempData("Amout") = CStr(oDataReader("amount"))
-                htTempData("Month") = CStr(Format(CDate(oDataReader("date")), "MMMM"))
+                htTempData("Month") = CStr(Format(CDate(oDataReader("invoice_date")), "MMMM"))
 
                 lsData.Add(htTempData)
             Loop
@@ -1091,7 +1091,7 @@ Public Class ReportController
         Dim sHtmlStartTag As String = "<html lang=""en"">"
         Dim sHeadTitle As String = "<head><title>" & sReportTitle & "</title></head>"
         Dim sBodyStartTag As String = "<body>"
-        Dim sReportHeading As String = "</h1>" & sReportTitle & "</h1>"
+        Dim sReportHeading As String = "<h1>" & sReportTitle & "</h1>"
         sReportContent = sDoctype & vbCrLf & sHtmlStartTag & vbCrLf & sHeadTitle _
          & vbCrLf & sBodyStartTag & vbCrLf & sReportHeading & vbCrLf
 
