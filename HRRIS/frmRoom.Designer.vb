@@ -72,6 +72,8 @@ Partial Class frmRoom
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GenerateReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gpbRoom.SuspendLayout()
         CType(Me.errorType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.errorPrice, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -483,14 +485,14 @@ Partial Class frmRoom
         'HomeToolStripMenuItem
         '
         Me.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.HomeToolStripMenuItem.Text = "New"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CustomerManagementToolStripMenuItem, Me.BookingManagementToolStripMenuItem, Me.ReportManagementToolStripMenuItem, Me.HomeToolStripMenuItem1})
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem.Text = "Open"
         '
         'CustomerManagementToolStripMenuItem
@@ -520,11 +522,12 @@ Partial Class frmRoom
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'ReportToolStripMenuItem
         '
+        Me.ReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerateReportToolStripMenuItem, Me.InvoiceToolStripMenuItem})
         Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
         Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.ReportToolStripMenuItem.Text = "Report"
@@ -540,6 +543,18 @@ Partial Class frmRoom
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'GenerateReportToolStripMenuItem
+        '
+        Me.GenerateReportToolStripMenuItem.Name = "GenerateReportToolStripMenuItem"
+        Me.GenerateReportToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.GenerateReportToolStripMenuItem.Text = "Generate Report"
+        '
+        'InvoiceToolStripMenuItem
+        '
+        Me.InvoiceToolStripMenuItem.Name = "InvoiceToolStripMenuItem"
+        Me.InvoiceToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.InvoiceToolStripMenuItem.Text = "Invoice"
         '
         'frmRoom
         '
@@ -628,4 +643,6 @@ Partial Class frmRoom
     Friend WithEvents ReportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GenerateReportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InvoiceToolStripMenuItem As ToolStripMenuItem
 End Class

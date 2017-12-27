@@ -134,9 +134,12 @@ Public Class frmReport
     End Sub
 
     'invoice
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnInvoice.Click
+    Private Sub InvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        Dim rController As ReportController = New ReportController
         rController.createInvoiceReport()
     End Sub
+
+
 
 
 

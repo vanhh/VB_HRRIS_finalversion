@@ -781,4 +781,18 @@ Public Class frmRoom
             End If
         End If
     End Sub
+
+    Private Sub GenerateReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerateReportToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Report Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmReport.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
+
+    Private Sub InvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InvoiceToolStripMenuItem.Click
+        Dim rController As ReportController = New ReportController
+        rController.createInvoiceReport()
+    End Sub
 End Class

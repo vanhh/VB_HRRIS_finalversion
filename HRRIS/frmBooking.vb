@@ -664,4 +664,24 @@ Public Class frmBooking
             Me.Show()
         End If
     End Sub
+
+    'about page
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+
+        Process.Start("https://sites.google.com/view/s3557184-hrris/home")
+    End Sub
+
+    Private Sub InvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InvoiceToolStripMenuItem.Click
+        Dim rController As ReportController = New ReportController
+        rController.createInvoiceReport()
+    End Sub
+
+    Private Sub ReportToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ReportToolStripMenuItem1.Click
+        If MsgBox("Are you sure you want to go to Report Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmReport.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
 End Class
