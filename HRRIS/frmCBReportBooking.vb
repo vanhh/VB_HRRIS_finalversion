@@ -139,8 +139,52 @@ Public Class frmReport
         rController.createInvoiceReport()
     End Sub
 
+    '-------------------------------------------------
+    'Toolstrip function
+    Private Sub RoomManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RoomManagementToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Room Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmRoom.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
 
+    'go to customer form
+    Private Sub CustomerManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerManagementToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Customer Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmCustomer.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
 
+    'go to booking form
+    Private Sub BookingManagementToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles BookingManagementToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Booking Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmBooking.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
 
+    'go to Home form
+    Private Sub Home_Click(sender As Object, e As EventArgs) Handles Home.Click
+        If MsgBox("Are you sure you want to go to Home? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmHome.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
 
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+        If MsgBox("Are you sure you want to close?", MsgBoxStyle.YesNo, "Exit Confirmation") = MsgBoxResult.Yes Then
+            Me.Close()
+        ElseIf CBool(MsgBoxResult.No) Then
+            Me.Show()
+        End If
+    End Sub
 End Class

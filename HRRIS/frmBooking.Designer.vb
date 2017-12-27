@@ -85,10 +85,10 @@ Partial Class frmBooking
         Me.HomeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gpbRoomInfo.SuspendLayout()
         CType(Me.errorRoomNo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbBookingInfo.SuspendLayout()
@@ -357,7 +357,7 @@ Partial Class frmBooking
         '
         'txtBookingID
         '
-        Me.txtBookingID.Location = New System.Drawing.Point(123, 267)
+        Me.txtBookingID.Location = New System.Drawing.Point(197, 267)
         Me.txtBookingID.Name = "txtBookingID"
         Me.txtBookingID.Size = New System.Drawing.Size(70, 20)
         Me.txtBookingID.TabIndex = 58
@@ -537,7 +537,7 @@ Partial Class frmBooking
         'btnUpdate
         '
         Me.btnUpdate.BackColor = System.Drawing.SystemColors.Control
-        Me.btnUpdate.Location = New System.Drawing.Point(710, 201)
+        Me.btnUpdate.Location = New System.Drawing.Point(710, 215)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(100, 30)
         Me.btnUpdate.TabIndex = 18
@@ -683,6 +683,18 @@ Partial Class frmBooking
         Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.ReportToolStripMenuItem.Text = "Report"
         '
+        'ReportToolStripMenuItem1
+        '
+        Me.ReportToolStripMenuItem1.Name = "ReportToolStripMenuItem1"
+        Me.ReportToolStripMenuItem1.Size = New System.Drawing.Size(159, 22)
+        Me.ReportToolStripMenuItem1.Text = "Generate Report"
+        '
+        'InvoiceToolStripMenuItem
+        '
+        Me.InvoiceToolStripMenuItem.Name = "InvoiceToolStripMenuItem"
+        Me.InvoiceToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.InvoiceToolStripMenuItem.Text = "Invoice"
+        '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
@@ -694,18 +706,6 @@ Partial Class frmBooking
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
-        '
-        'ReportToolStripMenuItem1
-        '
-        Me.ReportToolStripMenuItem1.Name = "ReportToolStripMenuItem1"
-        Me.ReportToolStripMenuItem1.Size = New System.Drawing.Size(159, 22)
-        Me.ReportToolStripMenuItem1.Text = "Generate Report"
-        '
-        'InvoiceToolStripMenuItem
-        '
-        Me.InvoiceToolStripMenuItem.Name = "InvoiceToolStripMenuItem"
-        Me.InvoiceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.InvoiceToolStripMenuItem.Text = "Invoice"
         '
         'frmBooking
         '

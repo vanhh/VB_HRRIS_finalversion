@@ -483,6 +483,8 @@ Public Class frmCustomer
         btnPrevious.Enabled = False
         btnNext.Enabled = False
         btnLast.Enabled = False
+
+
         Return clear
 
     End Function

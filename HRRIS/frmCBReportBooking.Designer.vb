@@ -89,17 +89,16 @@ Partial Class frmReport
         Me.lbReport = New System.Windows.Forms.Label()
         Me.BookingStrip = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HomeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Home = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RoomManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BookingManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HomeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TC_Report.SuspendLayout()
         Me.tabCusBook.SuspendLayout()
         Me.tabRoomLastBook.SuspendLayout()
@@ -806,23 +805,29 @@ Partial Class frmReport
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HomeToolStripMenuItem, Me.ExitToolStripMenuItem, Me.ExitToolStripMenuItem1})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
-        'HomeToolStripMenuItem
-        '
-        Me.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
-        Me.HomeToolStripMenuItem.Text = "New"
-        '
         'ExitToolStripMenuItem
         '
-        Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RoomManagementToolStripMenuItem, Me.BookingManagementToolStripMenuItem, Me.ReportManagementToolStripMenuItem, Me.HomeToolStripMenuItem1})
+        Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Home, Me.CustomerManagementToolStripMenuItem, Me.RoomManagementToolStripMenuItem, Me.BookingManagementToolStripMenuItem})
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Open"
+        '
+        'Home
+        '
+        Me.Home.Name = "Home"
+        Me.Home.Size = New System.Drawing.Size(194, 22)
+        Me.Home.Text = "Home"
+        '
+        'CustomerManagementToolStripMenuItem
+        '
+        Me.CustomerManagementToolStripMenuItem.Name = "CustomerManagementToolStripMenuItem"
+        Me.CustomerManagementToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.CustomerManagementToolStripMenuItem.Text = "Customer Managment"
         '
         'RoomManagementToolStripMenuItem
         '
@@ -834,24 +839,12 @@ Partial Class frmReport
         '
         Me.BookingManagementToolStripMenuItem.Name = "BookingManagementToolStripMenuItem"
         Me.BookingManagementToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
-        Me.BookingManagementToolStripMenuItem.Text = "Customer Managment"
-        '
-        'ReportManagementToolStripMenuItem
-        '
-        Me.ReportManagementToolStripMenuItem.Name = "ReportManagementToolStripMenuItem"
-        Me.ReportManagementToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
-        Me.ReportManagementToolStripMenuItem.Text = "Report Management"
-        '
-        'HomeToolStripMenuItem1
-        '
-        Me.HomeToolStripMenuItem1.Name = "HomeToolStripMenuItem1"
-        Me.HomeToolStripMenuItem1.Size = New System.Drawing.Size(194, 22)
-        Me.HomeToolStripMenuItem1.Text = "Home"
+        Me.BookingManagementToolStripMenuItem.Text = "Booking Management"
         '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(103, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'ReportToolStripMenuItem
@@ -860,6 +853,12 @@ Partial Class frmReport
         Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
         Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.ReportToolStripMenuItem.Text = "Report"
+        '
+        'InvoiceToolStripMenuItem
+        '
+        Me.InvoiceToolStripMenuItem.Name = "InvoiceToolStripMenuItem"
+        Me.InvoiceToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.InvoiceToolStripMenuItem.Text = "Invoice"
         '
         'HelpToolStripMenuItem
         '
@@ -872,12 +871,6 @@ Partial Class frmReport
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
-        '
-        'InvoiceToolStripMenuItem
-        '
-        Me.InvoiceToolStripMenuItem.Name = "InvoiceToolStripMenuItem"
-        Me.InvoiceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.InvoiceToolStripMenuItem.Text = "Invoice"
         '
         'frmReport
         '
@@ -980,12 +973,11 @@ Partial Class frmReport
     Friend WithEvents btnInvoice As Button
     Friend WithEvents BookingStrip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HomeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RoomManagementToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CustomerManagementToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BookingManagementToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReportManagementToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HomeToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents Home As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ReportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
