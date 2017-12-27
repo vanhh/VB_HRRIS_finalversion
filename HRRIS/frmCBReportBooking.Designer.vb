@@ -84,7 +84,7 @@ Partial Class frmReport
         Me.btnReportCBR = New System.Windows.Forms.Button()
         Me.tabInvoice = New System.Windows.Forms.TabPage()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnInvoice = New System.Windows.Forms.Button()
         Me.HRRStitle = New System.Windows.Forms.Label()
         Me.lbReport = New System.Windows.Forms.Label()
         Me.BookingStrip = New System.Windows.Forms.MenuStrip()
@@ -741,7 +741,7 @@ Partial Class frmReport
         'tabInvoice
         '
         Me.tabInvoice.Controls.Add(Me.Label9)
-        Me.tabInvoice.Controls.Add(Me.Button1)
+        Me.tabInvoice.Controls.Add(Me.btnInvoice)
         Me.tabInvoice.Location = New System.Drawing.Point(4, 22)
         Me.tabInvoice.Name = "tabInvoice"
         Me.tabInvoice.Padding = New System.Windows.Forms.Padding(3)
@@ -762,14 +762,14 @@ Partial Class frmReport
         Me.Label9.TabIndex = 60
         Me.Label9.Text = "Invoice for Current Year"
         '
-        'Button1
+        'btnInvoice
         '
-        Me.Button1.Location = New System.Drawing.Point(247, 108)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(170, 25)
-        Me.Button1.TabIndex = 57
-        Me.Button1.Text = "Generate Report"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnInvoice.Location = New System.Drawing.Point(247, 108)
+        Me.btnInvoice.Name = "btnInvoice"
+        Me.btnInvoice.Size = New System.Drawing.Size(170, 25)
+        Me.btnInvoice.TabIndex = 57
+        Me.btnInvoice.Text = "Generate Report"
+        Me.btnInvoice.UseVisualStyleBackColor = True
         '
         'HRRStitle
         '
@@ -969,7 +969,7 @@ Partial Class frmReport
     Friend WithEvents btnReportCBR As Button
     Friend WithEvents tabInvoice As TabPage
     Friend WithEvents Label9 As Label
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnInvoice As Button
     Friend WithEvents BookingStrip As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HomeToolStripMenuItem As ToolStripMenuItem

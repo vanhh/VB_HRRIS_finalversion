@@ -1014,5 +1014,191 @@ Public Class ReportController
 
     End Function
 
+    'invoice
+    Public Function generateInvoice() As List(Of Hashtable)
 
+        Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
+        Dim lsData As New List(Of Hashtable)
+
+        Try
+            Debug.Print("Connection string: " & oConnection.ConnectionString)
+
+            oConnection.Open()
+            Dim oCommand As OleDbCommand = New OleDbCommand
+            oCommand.Connection = oConnection
+            Dim sCmdText As String
+            Dim month As String = "Month"
+            sCmdText = "SELECT booking_id,date,amount,"
+
+            sCmdText += "month(date) "
+            ' sCmdText += " AS " & month
+            sCmdText += " FROM invoice where year(date)=Year(now()) order by month(date);"
+            oCommand.CommandText = sCmdText
+            '  "SELECT booking_id,date, month(date) AS Month, amount FROM invoice where year(date)=Year(now()) order by month(date);"
+            Debug.Print(oCommand.CommandText)
+            oCommand.Prepare()
+            Dim oDataReader = oCommand.ExecuteReader()
+
+            Dim htTempData As Hashtable
+            Do While oDataReader.Read() = True
+                htTempData = New Hashtable
+                htTempData("BookingID") = CStr(oDataReader("booking_id"))
+                htTempData("Date") = CStr(oDataReader("date"))
+                htTempData("Amout") = CStr(oDataReader("amount"))
+                htTempData("Month") = CStr(Format(CDate(oDataReader("date")), "MMMM"))
+
+                lsData.Add(htTempData)
+            Loop
+            Debug.Print("The records were found.")
+
+        Catch ex As Exception
+            Debug.Print("ERROR: " & ex.Message)
+            MsgBox("An error occurred. The records could not be found!")
+        Finally
+            oConnection.Close()
+        End Try
+
+        Return lsData
+
+    End Function
+
+    'create break report for Invoice
+    Public Sub createInvoiceReport()
+        Dim lsData = generateInvoice()
+        If lsData.Count > 0 Then
+            Debug.Print("Invoice Report")
+            Dim sReportTitle = "Invoice for the current year"
+            Dim sReportContent = generateInvoiceReport(lsData, sReportTitle)
+            Dim sReportFilename = "InvoiceReport.html"
+            saveReport(sReportContent, sReportFilename)
+
+            Dim sParam As String = """" & Application.StartupPath & "\" & sReportFilename & """"
+            Debug.Print("sParam: " & sParam)
+            System.Diagnostics.Process.Start(sParam)
+        Else
+            Debug.Print("No records were found. Terminate generating report")
+        End If
+
+    End Sub
+
+    Private Function generateInvoiceReport(ByVal lsData As List(Of Hashtable), ByVal sReportTitle As String) As String
+
+
+        Dim sReportContent As String
+
+        ' 1. Generate the start of the HTML file
+        Dim sDoctype As String = "<!DOCTYPE html>"
+        Dim sHtmlStartTag As String = "<html lang=""en"">"
+        Dim sHeadTitle As String = "<head><title>" & sReportTitle & "</title></head>"
+        Dim sBodyStartTag As String = "<body>"
+        Dim sReportHeading As String = "</h1>" & sReportTitle & "</h1>"
+        sReportContent = sDoctype & vbCrLf & sHtmlStartTag & vbCrLf & sHeadTitle _
+         & vbCrLf & sBodyStartTag & vbCrLf & sReportHeading & vbCrLf
+
+        ' 2. Generate the product table and its rows
+        Dim sTable = generateInvoiceTable(lsData)
+        sReportContent &= sTable & vbCrLf
+
+        ' 3. Generate the end of the HTML file
+        Dim sBodyEndTag As String = "</body>"
+        Dim sHTMLEndTag As String = "</html>"
+        sReportContent &= sBodyEndTag & vbCrLf & sHTMLEndTag
+
+        Return sReportContent
+
+    End Function
+
+    Private Function generateInvoiceTable(ByVal lsData As List(Of Hashtable)) As String
+
+        ' Generate the start of the table
+        Dim sTable = "<table border=""1"">" & vbCrLf
+        Dim htSample As Hashtable = lsData.Item(0)
+
+        Dim lsKeys As List(Of String) = New List(Of String)
+        lsKeys.Add("BookingID")
+        lsKeys.Add("Date")
+        lsKeys.Add("Amout")
+        ' lsKeys.Add("Month")
+
+        ' Generate the header row
+        Dim sHeaderRow = "<tr>" & vbCrLf
+        For Each key In lsKeys
+            sHeaderRow &= "<th>" & CStr(key) & "</th>" & vbCrLf
+        Next
+        sHeaderRow &= "</tr>" & vbCrLf
+        Debug.Print("sHeaderRow: " & sHeaderRow)
+        sTable &= sHeaderRow
+
+        'Generate the sum rows: total bookings 
+
+        ' Generate the table rows
+        sTable &= generateInvoiceTableRows(lsData, lsKeys)
+
+        ' Generate the end of the table
+        sTable &= "</table>" & vbCrLf
+
+        Return sTable
+
+    End Function
+
+    Private Function generateInvoiceTableRows(ByVal lsData As List(Of Hashtable),
+                                       ByVal lsKeys As List(Of String)) As String
+
+        '1. Initialisation
+        Dim sRows As String = ""
+        Dim sTableRow As String
+        Dim iCountRecordsPerRoom As Integer = 0
+        Dim bFirstTime As Boolean = True
+        Dim sCurrentControlField As String = ""
+        Dim sPreviousControlField As String = ""
+
+        '2. Loop through the list of hashtables
+        For Each record In lsData
+
+            '2a. Get a product and set the current key
+            Dim booking As Hashtable = record
+            sCurrentControlField = CStr(booking("Month"))
+
+            '2b. Do not check for control break on the first iteration of the loop
+            If bFirstTime Then
+                bFirstTime = False
+            Else
+                'Output total row if change in control field
+                'And reset the total
+                If sCurrentControlField <> sPreviousControlField Then
+                    sTableRow = "<tr><td colspan = """ & lsKeys.Count & """>" _
+                        & "Invoices in " & sPreviousControlField _
+                        & " : " & iCountRecordsPerRoom _
+                        & "</td></tr>" _
+                        & vbCrLf
+                    sRows &= sTableRow
+                    iCountRecordsPerRoom = 0
+                End If
+            End If
+
+            ' 2c. Output a normal row for every pass thru' the list
+            sTableRow = "<tr>" & vbCrLf
+            For Each key In lsKeys
+                sTableRow &= "<td>" & CStr(booking(key)) & "</td>" & vbCrLf
+            Next
+            sTableRow &= "</tr>" & vbCrLf
+            Debug.Print("sTableRow: " & sTableRow)
+            sRows &= sTableRow
+
+            '2d. Update control field and increment total
+            sPreviousControlField = sCurrentControlField
+            iCountRecordsPerRoom += 1
+        Next
+
+        '3. After the loop, need to output the last total row
+        sTableRow = "<tr><td colspan = """ & lsKeys.Count & """>" _
+                        & "Invoices in " & sCurrentControlField _
+                        & " : " & iCountRecordsPerRoom _
+                        & "</td></tr>" _
+                        & vbCrLf
+        sRows &= sTableRow
+
+        Return sRows
+
+    End Function
 End Class
