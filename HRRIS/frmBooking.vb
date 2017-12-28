@@ -774,9 +774,18 @@ Public Class frmBooking
 
     'about page
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-
-        Process.Start("https://sites.google.com/view/s3557184-hrris/home")
+        Dim sParam As String = """" & Application.StartupPath & "\about.html"""
+        Debug.Print("sParam: " & sParam)
+        System.Diagnostics.Process.Start(sParam)
     End Sub
+
+    'help page
+    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
+        Dim sParam As String = """" & Application.StartupPath & "\help.html"""
+        Debug.Print("sParam: " & sParam)
+        System.Diagnostics.Process.Start(sParam)
+    End Sub
+
 
     'generate invoice
     Private Sub InvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InvoiceToolStripMenuItem.Click

@@ -744,7 +744,7 @@ Partial Class frmBooking
         Me.Controls.Add(Me.gpbRoomInfo)
         Me.Name = "frmBooking"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Room Reservation"
+        Me.Text = "Booking Reservation"
         Me.gpbRoomInfo.ResumeLayout(False)
         Me.gpbRoomInfo.PerformLayout()
         CType(Me.errorRoomNo, System.ComponentModel.ISupportInitialize).EndInit()

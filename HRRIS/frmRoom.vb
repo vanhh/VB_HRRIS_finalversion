@@ -777,4 +777,18 @@ Public Class frmRoom
         Dim rController As ReportController = New ReportController
         rController.createInvoiceReport()
     End Sub
+
+    'about page
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim sParam As String = """" & Application.StartupPath & "\about.html"""
+        Debug.Print("sParam: " & sParam)
+        System.Diagnostics.Process.Start(sParam)
+    End Sub
+
+    'help page
+    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
+        Dim sParam As String = """" & Application.StartupPath & "\help.html"""
+        Debug.Print("sParam: " & sParam)
+        System.Diagnostics.Process.Start(sParam)
+    End Sub
 End Class
