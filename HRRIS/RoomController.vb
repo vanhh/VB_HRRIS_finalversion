@@ -13,6 +13,7 @@ Public Class RoomController
     Public Const CONNECTION_STRING As String =
     "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=HRRIS_DB.accdb"
 
+    'insert room info to dtb
     Public Function insert(ByVal htData As Hashtable) As Integer
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
         Dim iNumRows As Integer
@@ -61,6 +62,7 @@ Public Class RoomController
         Return iNumRows
     End Function
 
+    'update room info to database
     Public Function update(ByVal htData As Hashtable) As Integer
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
         Dim iNumRows As Integer
@@ -97,6 +99,7 @@ Public Class RoomController
 
 
             Debug.Print("The record was updated")
+            MessageBox.Show("Room information was updated.")
 
         Catch ex As Exception
             Debug.Print("ERROR: " & ex.Message)
@@ -109,6 +112,7 @@ Public Class RoomController
         Return iNumRows
     End Function
 
+    'delete room
     Public Function delete(ByVal htData As Hashtable) As Integer
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
         Dim iNumRows As Integer
@@ -116,6 +120,21 @@ Public Class RoomController
         Try
             Debug.Print("Connection string: " & oConnection.ConnectionString)
             oConnection.Open()
+
+            'from invoice table, delete all booking records having that room_id
+            Dim oCommand2 As OleDbCommand = New OleDbCommand
+            oCommand2.Connection = oConnection
+
+            oCommand2.CommandText = "delete invoice.* from invoice inner join booking on invoice.booking_id = booking.booking_id where invoice.booking_id in (select booking_id from booking where room_id=?)"
+
+            oCommand2.Parameters.Add("RoomID", OleDbType.Integer, 10)
+            oCommand2.Parameters("RoomID").Value = CInt(htData("RoomID"))
+            oCommand2.Prepare()
+            Debug.Print(oCommand2.CommandText)
+            oCommand2.Prepare()
+            oCommand2.ExecuteNonQuery()
+
+            'delete booking records having that room_id
             Dim oCommand As OleDbCommand = New OleDbCommand
             oCommand.Connection = oConnection
 
@@ -128,7 +147,7 @@ Public Class RoomController
             Debug.Print(CStr(iNumRows))
             If iNumRows >= 0 Then
                 Try
-
+                    'delete that room in room dtb
                     Dim oCommand1 As OleDbCommand = New OleDbCommand
                     oCommand1.Connection = oConnection
 
@@ -162,6 +181,8 @@ Public Class RoomController
 
         Return iNumRows
     End Function
+
+    'check room number to make sure that user does not duplicate the number
     Public Function checkRoom(room_number As String) As List(Of Hashtable)
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
         ' Dim result As Boolean
@@ -187,6 +208,7 @@ Public Class RoomController
         Return lsData
     End Function
 
+    'find all room in the database
     Public Function findAllRoom() As List(Of Hashtable)
 
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -232,6 +254,7 @@ Public Class RoomController
 
     End Function
 
+    'find room based on the query search string (search by room number, type, id
     Public Function findRoom(RoomNo As String) As List(Of Hashtable)
 
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -282,6 +305,7 @@ Public Class RoomController
 
     End Function
 
+    'get room info to display on form
     Public Function getRoomInfo(RoomID As String) As List(Of Hashtable)
 
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)

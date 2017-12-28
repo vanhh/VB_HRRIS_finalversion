@@ -66,10 +66,10 @@ Partial Class frmCustomer
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HomeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HomeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RoomManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BookingManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HomeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -289,6 +289,7 @@ Partial Class frmCustomer
         'cboGender
         '
         Me.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboGender.Enabled = False
         Me.cboGender.FormattingEnabled = True
         Me.cboGender.Items.AddRange(New Object() {"Female", "Male"})
         Me.cboGender.Location = New System.Drawing.Point(381, 26)
@@ -506,15 +507,21 @@ Partial Class frmCustomer
         'HomeToolStripMenuItem
         '
         Me.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem"
-        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HomeToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.HomeToolStripMenuItem.Text = "New"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HomeToolStripMenuItem1, Me.RoomManagementToolStripMenuItem, Me.BookingManagementToolStripMenuItem, Me.ReportManagementToolStripMenuItem})
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem.Text = "Open"
+        '
+        'HomeToolStripMenuItem1
+        '
+        Me.HomeToolStripMenuItem1.Name = "HomeToolStripMenuItem1"
+        Me.HomeToolStripMenuItem1.Size = New System.Drawing.Size(192, 22)
+        Me.HomeToolStripMenuItem1.Text = "Home"
         '
         'RoomManagementToolStripMenuItem
         '
@@ -534,16 +541,10 @@ Partial Class frmCustomer
         Me.ReportManagementToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
         Me.ReportManagementToolStripMenuItem.Text = "Report Management"
         '
-        'HomeToolStripMenuItem1
-        '
-        Me.HomeToolStripMenuItem1.Name = "HomeToolStripMenuItem1"
-        Me.HomeToolStripMenuItem1.Size = New System.Drawing.Size(192, 22)
-        Me.HomeToolStripMenuItem1.Text = "Home"
-        '
         'ExitToolStripMenuItem1
         '
         Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
-        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(103, 22)
         Me.ExitToolStripMenuItem1.Text = "Exit"
         '
         'ReportToolStripMenuItem

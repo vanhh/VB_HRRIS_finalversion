@@ -328,13 +328,27 @@ Public Class CustomerController
         Try
             Debug.Print("Connection string: " & oConnection.ConnectionString)
             oConnection.Open()
+
+            'from invoice table, delete all booking records having that customer info
+            Dim oCommand2 As OleDbCommand = New OleDbCommand
+            oCommand2.Connection = oConnection
+
+            oCommand2.CommandText = "delete invoice.* from invoice inner join booking on invoice.booking_id = booking.booking_id where invoice.booking_id in (select booking_id from booking where customer_id=?)"
+
+            oCommand2.Parameters.Add("CustomerID", OleDbType.Integer, 10)
+            oCommand2.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
+            oCommand2.Prepare()
+            Debug.Print(oCommand2.CommandText)
+            oCommand2.Prepare()
+            oCommand2.ExecuteNonQuery()
+
+            'delete records on booking table having that customer_id
             Dim oCommand As OleDbCommand = New OleDbCommand
             oCommand.Connection = oConnection
 
             oCommand.CommandText = "delete from booking where customer_id = ?"
             oCommand.Parameters.Add("CustomerID", OleDbType.Integer, 10)
             oCommand.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
-
 
             oCommand.Prepare()
             iNumRows = oCommand.ExecuteNonQuery()
@@ -345,6 +359,7 @@ Public Class CustomerController
                     Dim oCommand1 As OleDbCommand = New OleDbCommand
                     oCommand1.Connection = oConnection
 
+                    'delete customer on customer database
                     oCommand1.CommandText = "delete from customer where customer_id = ?"
                     oCommand1.Parameters.Add("CustomerID", OleDbType.Integer, 10)
                     oCommand1.Parameters("CustomerID").Value = CInt(htData("CustomerID"))

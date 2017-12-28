@@ -70,10 +70,10 @@ Partial Class frmRoom
         Me.HomeToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.gpbRoom.SuspendLayout()
         CType(Me.errorType, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.errorPrice, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -373,7 +373,7 @@ Partial Class frmRoom
         Me.btnInsert.Name = "btnInsert"
         Me.btnInsert.Size = New System.Drawing.Size(100, 30)
         Me.btnInsert.TabIndex = 14
-        Me.btnInsert.Text = "OK"
+        Me.btnInsert.Text = "Insert"
         Me.btnInsert.UseVisualStyleBackColor = False
         '
         'btnClear
@@ -532,18 +532,6 @@ Partial Class frmRoom
         Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.ReportToolStripMenuItem.Text = "Report"
         '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.HelpToolStripMenuItem.Text = "Help"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
-        Me.AboutToolStripMenuItem.Text = "About"
-        '
         'GenerateReportToolStripMenuItem
         '
         Me.GenerateReportToolStripMenuItem.Name = "GenerateReportToolStripMenuItem"
@@ -555,6 +543,18 @@ Partial Class frmRoom
         Me.InvoiceToolStripMenuItem.Name = "InvoiceToolStripMenuItem"
         Me.InvoiceToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
         Me.InvoiceToolStripMenuItem.Text = "Invoice"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
+        Me.AboutToolStripMenuItem.Text = "About"
         '
         'frmRoom
         '

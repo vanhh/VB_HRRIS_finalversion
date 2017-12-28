@@ -422,7 +422,6 @@ Public Class ReportController
 
     End Sub
 
-
     'REPORT 05
     'find customers  who are due for checkin in a given month-year
     Public Function findDueCustomer(month As String, year As String) As List(Of Hashtable)

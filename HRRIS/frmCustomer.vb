@@ -391,30 +391,35 @@ Public Class frmCustomer
     'insert to database
     Private Sub btnInsert_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsert.Click
         Dim htData As Hashtable = New Hashtable
-        Dim bAllValid = validateFormData()
-        If bAllValid Then
-            htData("Title") = cboTitle.Text()
-            htData("FirstName") = txtFirstName.Text
-            htData("LastName") = txtLastName.Text
-            htData("Gender") = cboGender.Text
-            htData("DOB") = dtDOB.Text
-            htData("Email") = txtEmail.Text
-            htData("Phone") = txtPhone.Text
-            htData("Address") = txtAddress.Text
+        Dim result = oController.getCustomerInfo(txtCustomerID.Text)
+        If result.Count > 0 Then
+            MsgBox("This customer profile is already in the database")
+        Else
+            Dim bAllValid = validateFormData()
+            If bAllValid Then
+                htData("Title") = cboTitle.Text()
+                htData("FirstName") = txtFirstName.Text
+                htData("LastName") = txtLastName.Text
+                htData("Gender") = cboGender.Text
+                htData("DOB") = dtDOB.Text
+                htData("Email") = txtEmail.Text
+                htData("Phone") = txtPhone.Text
+                htData("Address") = txtAddress.Text
 
-            Dim oCustomerController As CustomerController = New CustomerController()
 
-            Dim iNumRows = oCustomerController.insert(htData)
-            Debug.Print(CStr(iNumRows))
+                Dim iNumRows = oController.insert(htData)
+                Debug.Print(CStr(iNumRows))
 
-            If iNumRows > 0 Then
-                Dim clear = clearField()
-                If clear Then
-                    Debug.Print("all field was cleared")
+                If iNumRows > 0 Then
+                    Dim clear = clearField()
+                    If clear Then
+                        Debug.Print("all field was cleared")
+                    End If
                 End If
-            End If
 
+            End If
         End If
+
 
     End Sub
 

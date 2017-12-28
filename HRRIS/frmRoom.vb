@@ -21,29 +21,33 @@ Public Class frmRoom
         Dim htData As Hashtable = New Hashtable
         Dim bAllValid = validateFormData()
 
-        If bAllValid Then
-            htData("RoomNumber") = txtRoomNo.Text()
-            htData("RoomType") = cboType.Text()
-            htData("Price") = txtPrice.Text()
-            htData("NumOfBeds") = txtBeds.Text()
-            htData("Availability") = cboAvailability.Text()
-            htData("Floor") = txtFloor.Text()
-            htData("Description") = txtDescription.Text()
-
-            Dim oRoomController As RoomController = New RoomController()
-
-            Dim iNumRows = oRoomController.insert(htData)
-            Debug.Print(CStr(iNumRows))
-
-            If iNumRows > 0 Then
-                Dim clear = clearField()
-                If clear Then
-                    Debug.Print("all field was cleared")
-                End If
-            End If
+        Dim htdata1 = oRoomController.getRoomInfo(txtRoomID.Text)
+        If htdata1.Count > 0 Then
+            MsgBox("This room is already in the database")
         Else
+            If bAllValid Then
+                htData("RoomNumber") = txtRoomNo.Text()
+                htData("RoomType") = cboType.Text()
+                htData("Price") = txtPrice.Text()
+                htData("NumOfBeds") = txtBeds.Text()
+                htData("Availability") = cboAvailability.Text()
+                htData("Floor") = txtFloor.Text()
+                htData("Description") = txtDescription.Text()
 
+                Dim iNumRows = oRoomController.insert(htData)
+                Debug.Print(CStr(iNumRows))
+
+                If iNumRows > 0 Then
+                    Dim clear = clearField()
+                    If clear Then
+                        Debug.Print("all field was cleared")
+                    End If
+                End If
+            Else
+
+            End If
         End If
+
     End Sub
 
     Private Function validateFormData() As Boolean
@@ -236,7 +240,7 @@ Public Class frmRoom
         btnPrevious.Enabled = False
         btnNext.Enabled = False
         btnLast.Enabled = False
-
+        txtRoomNo.Enabled = True
         Return clearDone
     End Function
 
@@ -248,40 +252,6 @@ Public Class frmRoom
         bAllFieldsValid = True
         Dim tt As New ToolTip()
 
-        'check room numbers - roomNo is nummeric value
-
-        bNotEmpty = oValidation.isEmpty(txtRoomNo.Text)
-        bIsValid = oValidation.isNumericVal(txtRoomNo.Text)
-        If bNotEmpty Then
-            If bIsValid Then
-                If txtRoomNo.TextLength = 3 Then
-                    Dim room_number = txtRoomNo.Text
-
-                    Dim oController As RoomController = New RoomController
-
-                    Dim result = oController.checkRoom(room_number)
-                    If result.Count > 1 Then
-                        tt.SetToolTip(errorRoomNo, "This room number already exits! Please select another number")
-                        bAllFieldsValid = False
-                        errorRoomNo.Visible = True
-                    Else
-                        errorRoomNo.Visible = False
-                    End If
-                Else
-                    errorRoomNo.Visible = True
-                    tt.SetToolTip(errorRoomNo, "Invalid format for Room Number")
-                    bAllFieldsValid = False
-                End If
-            Else
-                errorRoomNo.Visible = True
-                tt.SetToolTip(errorRoomNo, "Invalid value for Room Number")
-                bAllFieldsValid = False
-            End If
-        Else
-            errorRoomNo.Visible = True
-            tt.SetToolTip(errorRoomNo, "Please enter Room Number")
-            bAllFieldsValid = False
-        End If
 
         'check Room Type 
         bNotEmpty = oValidation.isEmpty(cboType.Text)
@@ -740,46 +710,58 @@ Public Class frmRoom
         End If
     End Sub
 
+    Dim validation As New Validation
     'enable or  disable navigation buttons
     Private Sub txtRoomID_TextChanged(sender As Object, e As EventArgs) Handles txtRoomID.TextChanged
-        If search = False Then
-            mdata = oRoomController.findAllRoom()
+        Dim bNotEmpty As Boolean
+        bNotEmpty = validation.isEmpty(txtRoomID.Text)
+        If bNotEmpty Then
+            txtRoomNo.Enabled = False
+            If search = False Then
+                mdata = oRoomController.findAllRoom()
 
-            If iCurrentIndex = 0 Then
-                btnFirst.Enabled = False
-                btnPrevious.Enabled = False
-            Else
-                btnFirst.Enabled = True
-                btnPrevious.Enabled = True
-            End If
+                If iCurrentIndex = 0 Then
+                    btnFirst.Enabled = False
+                    btnPrevious.Enabled = False
+                Else
+                    btnFirst.Enabled = True
+                    btnPrevious.Enabled = True
+                End If
 
-            If iCurrentIndex = mdata.Count - 1 Then
-                btnNext.Enabled = False
-                btnLast.Enabled = False
+                If iCurrentIndex = mdata.Count - 1 Then
+                    btnNext.Enabled = False
+                    btnLast.Enabled = False
+                Else
+                    btnNext.Enabled = True
+                    btnLast.Enabled = True
+                End If
             Else
-                btnNext.Enabled = True
-                btnLast.Enabled = True
+                Dim keyword = txtSearch.Text
+                mdata = oRoomController.findRoom(keyword)
+
+                If iCurrentIndex = 0 Then
+                    btnFirst.Enabled = False
+                    btnPrevious.Enabled = False
+                Else
+                    btnFirst.Enabled = True
+                    btnPrevious.Enabled = True
+                End If
+
+                If iCurrentIndex = mdata.Count - 1 Then
+                    btnNext.Enabled = False
+                    btnLast.Enabled = False
+                Else
+                    btnNext.Enabled = True
+                    btnLast.Enabled = True
+                End If
             End If
         Else
-            Dim keyword = txtSearch.Text
-            mdata = oRoomController.findRoom(keyword)
-
-            If iCurrentIndex = 0 Then
-                btnFirst.Enabled = False
-                btnPrevious.Enabled = False
-            Else
-                btnFirst.Enabled = True
-                btnPrevious.Enabled = True
-            End If
-
-            If iCurrentIndex = mdata.Count - 1 Then
-                btnNext.Enabled = False
-                btnLast.Enabled = False
-            Else
-                btnNext.Enabled = True
-                btnLast.Enabled = True
-            End If
+            btnNext.Enabled = False
+            btnLast.Enabled = False
+            btnFirst.Enabled = False
+            btnPrevious.Enabled = False
         End If
+
     End Sub
 
     Private Sub GenerateReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerateReportToolStripMenuItem.Click
