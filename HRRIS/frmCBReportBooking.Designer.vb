@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmReport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,19 +20,21 @@ Partial Class frmReport
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.TC_Report = New System.Windows.Forms.TabControl()
         Me.tabCusBook = New System.Windows.Forms.TabPage()
+        Me.error01 = New System.Windows.Forms.PictureBox()
         Me.lbReport01 = New System.Windows.Forms.Label()
         Me.btnReport01 = New System.Windows.Forms.Button()
-        Me.cbCustomerID = New System.Windows.Forms.ComboBox()
+        Me.cbCustomerID01 = New System.Windows.Forms.ComboBox()
         Me.txtLN = New System.Windows.Forms.TextBox()
         Me.txtFN = New System.Windows.Forms.TextBox()
         Me.lbFirstName = New System.Windows.Forms.Label()
         Me.lbLastName = New System.Windows.Forms.Label()
         Me.lbCustomerID = New System.Windows.Forms.Label()
         Me.tabRoomLastBook = New System.Windows.Forms.TabPage()
+        Me.error02 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtRoomID = New System.Windows.Forms.TextBox()
         Me.lbRoomID = New System.Windows.Forms.Label()
@@ -40,6 +42,9 @@ Partial Class frmReport
         Me.lblRoomNumber = New System.Windows.Forms.Label()
         Me.btnReport02 = New System.Windows.Forms.Button()
         Me.tabCusBookPeriod = New System.Windows.Forms.TabPage()
+        Me.errorC03 = New System.Windows.Forms.PictureBox()
+        Me.errorY03 = New System.Windows.Forms.PictureBox()
+        Me.errorM03 = New System.Windows.Forms.PictureBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtYear03 = New System.Windows.Forms.TextBox()
         Me.cbMonth03 = New System.Windows.Forms.ComboBox()
@@ -53,33 +58,40 @@ Partial Class frmReport
         Me.lbLN03 = New System.Windows.Forms.Label()
         Me.lbCusID03 = New System.Windows.Forms.Label()
         Me.tbMonthBooking = New System.Windows.Forms.TabPage()
+        Me.errorM04 = New System.Windows.Forms.PictureBox()
+        Me.errorY04 = New System.Windows.Forms.PictureBox()
+        Me.txtYear04 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cbMonth04 = New System.Windows.Forms.ComboBox()
         Me.lbYear04 = New System.Windows.Forms.Label()
-        Me.cbYear04 = New System.Windows.Forms.ComboBox()
         Me.lbMonth04 = New System.Windows.Forms.Label()
         Me.btnReport04 = New System.Windows.Forms.Button()
         Me.tabDueCheckin = New System.Windows.Forms.TabPage()
+        Me.errorM05 = New System.Windows.Forms.PictureBox()
+        Me.errorY05 = New System.Windows.Forms.PictureBox()
+        Me.txtYear05 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cbYear05 = New System.Windows.Forms.ComboBox()
         Me.cbMonth05 = New System.Windows.Forms.ComboBox()
         Me.lbYear05 = New System.Windows.Forms.Label()
         Me.lbMonth05 = New System.Windows.Forms.Label()
         Me.btnReport05 = New System.Windows.Forms.Button()
         Me.tabRoomBooking = New System.Windows.Forms.TabPage()
+        Me.errorR06 = New System.Windows.Forms.PictureBox()
+        Me.errorM06 = New System.Windows.Forms.PictureBox()
+        Me.errorY06 = New System.Windows.Forms.PictureBox()
+        Me.txtYear06 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lbRoom = New System.Windows.Forms.Label()
         Me.cbRoom06 = New System.Windows.Forms.ComboBox()
         Me.cbMonth06 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.cbYear06 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnReport6 = New System.Windows.Forms.Button()
         Me.tabCBReport01 = New System.Windows.Forms.TabPage()
+        Me.txtYearCBR = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cbMonthCBR = New System.Windows.Forms.ComboBox()
         Me.lbYearCBR = New System.Windows.Forms.Label()
-        Me.cbYearCBR = New System.Windows.Forms.ComboBox()
         Me.lbMonthCBR = New System.Windows.Forms.Label()
         Me.btnReportCBR = New System.Windows.Forms.Button()
         Me.tabInvoice = New System.Windows.Forms.TabPage()
@@ -99,16 +111,32 @@ Partial Class frmReport
         Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.errorCBRY = New System.Windows.Forms.PictureBox()
+        Me.errorCBRM = New System.Windows.Forms.PictureBox()
         Me.TC_Report.SuspendLayout()
         Me.tabCusBook.SuspendLayout()
+        CType(Me.error01, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabRoomLastBook.SuspendLayout()
+        CType(Me.error02, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabCusBookPeriod.SuspendLayout()
+        CType(Me.errorC03, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorY03, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorM03, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbMonthBooking.SuspendLayout()
+        CType(Me.errorM04, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorY04, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabDueCheckin.SuspendLayout()
+        CType(Me.errorM05, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorY05, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabRoomBooking.SuspendLayout()
+        CType(Me.errorR06, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorM06, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorY06, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabCBReport01.SuspendLayout()
         Me.tabInvoice.SuspendLayout()
         Me.BookingStrip.SuspendLayout()
+        CType(Me.errorCBRY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorCBRM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TC_Report
@@ -129,9 +157,10 @@ Partial Class frmReport
         '
         'tabCusBook
         '
+        Me.tabCusBook.Controls.Add(Me.error01)
         Me.tabCusBook.Controls.Add(Me.lbReport01)
         Me.tabCusBook.Controls.Add(Me.btnReport01)
-        Me.tabCusBook.Controls.Add(Me.cbCustomerID)
+        Me.tabCusBook.Controls.Add(Me.cbCustomerID01)
         Me.tabCusBook.Controls.Add(Me.txtLN)
         Me.tabCusBook.Controls.Add(Me.txtFN)
         Me.tabCusBook.Controls.Add(Me.lbFirstName)
@@ -144,6 +173,16 @@ Partial Class frmReport
         Me.tabCusBook.TabIndex = 0
         Me.tabCusBook.Text = "Last Customer-Booking"
         Me.tabCusBook.UseVisualStyleBackColor = True
+        '
+        'error01
+        '
+        Me.error01.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.error01.Location = New System.Drawing.Point(268, 105)
+        Me.error01.Name = "error01"
+        Me.error01.Size = New System.Drawing.Size(20, 20)
+        Me.error01.TabIndex = 65
+        Me.error01.TabStop = False
+        Me.error01.Visible = False
         '
         'lbReport01
         '
@@ -166,17 +205,18 @@ Partial Class frmReport
         Me.btnReport01.Text = "Generate Report"
         Me.btnReport01.UseVisualStyleBackColor = True
         '
-        'cbCustomerID
+        'cbCustomerID01
         '
-        Me.cbCustomerID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbCustomerID.FormattingEnabled = True
-        Me.cbCustomerID.Location = New System.Drawing.Point(142, 105)
-        Me.cbCustomerID.Name = "cbCustomerID"
-        Me.cbCustomerID.Size = New System.Drawing.Size(120, 21)
-        Me.cbCustomerID.TabIndex = 5
+        Me.cbCustomerID01.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbCustomerID01.FormattingEnabled = True
+        Me.cbCustomerID01.Location = New System.Drawing.Point(142, 105)
+        Me.cbCustomerID01.Name = "cbCustomerID01"
+        Me.cbCustomerID01.Size = New System.Drawing.Size(120, 21)
+        Me.cbCustomerID01.TabIndex = 5
         '
         'txtLN
         '
+        Me.txtLN.Enabled = False
         Me.txtLN.Location = New System.Drawing.Point(465, 106)
         Me.txtLN.Name = "txtLN"
         Me.txtLN.Size = New System.Drawing.Size(120, 20)
@@ -184,6 +224,7 @@ Partial Class frmReport
         '
         'txtFN
         '
+        Me.txtFN.Enabled = False
         Me.txtFN.Location = New System.Drawing.Point(306, 106)
         Me.txtFN.Name = "txtFN"
         Me.txtFN.Size = New System.Drawing.Size(120, 20)
@@ -218,6 +259,7 @@ Partial Class frmReport
         '
         'tabRoomLastBook
         '
+        Me.tabRoomLastBook.Controls.Add(Me.error02)
         Me.tabRoomLastBook.Controls.Add(Me.Label3)
         Me.tabRoomLastBook.Controls.Add(Me.txtRoomID)
         Me.tabRoomLastBook.Controls.Add(Me.lbRoomID)
@@ -231,6 +273,16 @@ Partial Class frmReport
         Me.tabRoomLastBook.TabIndex = 1
         Me.tabRoomLastBook.Text = "Room - Last Booking"
         Me.tabRoomLastBook.UseVisualStyleBackColor = True
+        '
+        'error02
+        '
+        Me.error02.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.error02.Location = New System.Drawing.Point(312, 104)
+        Me.error02.Name = "error02"
+        Me.error02.Size = New System.Drawing.Size(20, 20)
+        Me.error02.TabIndex = 66
+        Me.error02.TabStop = False
+        Me.error02.Visible = False
         '
         'Label3
         '
@@ -290,6 +342,9 @@ Partial Class frmReport
         '
         'tabCusBookPeriod
         '
+        Me.tabCusBookPeriod.Controls.Add(Me.errorC03)
+        Me.tabCusBookPeriod.Controls.Add(Me.errorY03)
+        Me.tabCusBookPeriod.Controls.Add(Me.errorM03)
         Me.tabCusBookPeriod.Controls.Add(Me.Label4)
         Me.tabCusBookPeriod.Controls.Add(Me.txtYear03)
         Me.tabCusBookPeriod.Controls.Add(Me.cbMonth03)
@@ -309,6 +364,36 @@ Partial Class frmReport
         Me.tabCusBookPeriod.TabIndex = 2
         Me.tabCusBookPeriod.Text = "Customer-Booking "
         Me.tabCusBookPeriod.UseVisualStyleBackColor = True
+        '
+        'errorC03
+        '
+        Me.errorC03.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorC03.Location = New System.Drawing.Point(276, 81)
+        Me.errorC03.Name = "errorC03"
+        Me.errorC03.Size = New System.Drawing.Size(20, 20)
+        Me.errorC03.TabIndex = 66
+        Me.errorC03.TabStop = False
+        Me.errorC03.Visible = False
+        '
+        'errorY03
+        '
+        Me.errorY03.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorY03.Location = New System.Drawing.Point(452, 148)
+        Me.errorY03.Name = "errorY03"
+        Me.errorY03.Size = New System.Drawing.Size(20, 20)
+        Me.errorY03.TabIndex = 65
+        Me.errorY03.TabStop = False
+        Me.errorY03.Visible = False
+        '
+        'errorM03
+        '
+        Me.errorM03.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorM03.Location = New System.Drawing.Point(276, 147)
+        Me.errorM03.Name = "errorM03"
+        Me.errorM03.Size = New System.Drawing.Size(20, 20)
+        Me.errorM03.TabIndex = 64
+        Me.errorM03.TabStop = False
+        Me.errorM03.Visible = False
         '
         'Label4
         '
@@ -420,10 +505,12 @@ Partial Class frmReport
         '
         'tbMonthBooking
         '
+        Me.tbMonthBooking.Controls.Add(Me.errorM04)
+        Me.tbMonthBooking.Controls.Add(Me.errorY04)
+        Me.tbMonthBooking.Controls.Add(Me.txtYear04)
         Me.tbMonthBooking.Controls.Add(Me.Label5)
         Me.tbMonthBooking.Controls.Add(Me.cbMonth04)
         Me.tbMonthBooking.Controls.Add(Me.lbYear04)
-        Me.tbMonthBooking.Controls.Add(Me.cbYear04)
         Me.tbMonthBooking.Controls.Add(Me.lbMonth04)
         Me.tbMonthBooking.Controls.Add(Me.btnReport04)
         Me.tbMonthBooking.Location = New System.Drawing.Point(4, 22)
@@ -433,6 +520,33 @@ Partial Class frmReport
         Me.tbMonthBooking.TabIndex = 3
         Me.tbMonthBooking.Text = "Month- Booking"
         Me.tbMonthBooking.UseVisualStyleBackColor = True
+        '
+        'errorM04
+        '
+        Me.errorM04.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorM04.Location = New System.Drawing.Point(335, 98)
+        Me.errorM04.Name = "errorM04"
+        Me.errorM04.Size = New System.Drawing.Size(20, 20)
+        Me.errorM04.TabIndex = 63
+        Me.errorM04.TabStop = False
+        Me.errorM04.Visible = False
+        '
+        'errorY04
+        '
+        Me.errorY04.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorY04.Location = New System.Drawing.Point(563, 98)
+        Me.errorY04.Name = "errorY04"
+        Me.errorY04.Size = New System.Drawing.Size(20, 20)
+        Me.errorY04.TabIndex = 62
+        Me.errorY04.TabStop = False
+        Me.errorY04.Visible = False
+        '
+        'txtYear04
+        '
+        Me.txtYear04.Location = New System.Drawing.Point(437, 97)
+        Me.txtYear04.Name = "txtYear04"
+        Me.txtYear04.Size = New System.Drawing.Size(120, 20)
+        Me.txtYear04.TabIndex = 56
         '
         'Label5
         '
@@ -465,16 +579,6 @@ Partial Class frmReport
         Me.lbYear04.TabIndex = 19
         Me.lbYear04.Text = "Year"
         '
-        'cbYear04
-        '
-        Me.cbYear04.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbYear04.FormattingEnabled = True
-        Me.cbYear04.Items.AddRange(New Object() {"2016", "2017", "2018"})
-        Me.cbYear04.Location = New System.Drawing.Point(437, 97)
-        Me.cbYear04.Name = "cbYear04"
-        Me.cbYear04.Size = New System.Drawing.Size(120, 21)
-        Me.cbYear04.TabIndex = 17
-        '
         'lbMonth04
         '
         Me.lbMonth04.AutoSize = True
@@ -495,8 +599,10 @@ Partial Class frmReport
         '
         'tabDueCheckin
         '
+        Me.tabDueCheckin.Controls.Add(Me.errorM05)
+        Me.tabDueCheckin.Controls.Add(Me.errorY05)
+        Me.tabDueCheckin.Controls.Add(Me.txtYear05)
         Me.tabDueCheckin.Controls.Add(Me.Label6)
-        Me.tabDueCheckin.Controls.Add(Me.cbYear05)
         Me.tabDueCheckin.Controls.Add(Me.cbMonth05)
         Me.tabDueCheckin.Controls.Add(Me.lbYear05)
         Me.tabDueCheckin.Controls.Add(Me.lbMonth05)
@@ -509,6 +615,33 @@ Partial Class frmReport
         Me.tabDueCheckin.Text = "Due for Checkin"
         Me.tabDueCheckin.UseVisualStyleBackColor = True
         '
+        'errorM05
+        '
+        Me.errorM05.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorM05.Location = New System.Drawing.Point(331, 100)
+        Me.errorM05.Name = "errorM05"
+        Me.errorM05.Size = New System.Drawing.Size(20, 20)
+        Me.errorM05.TabIndex = 61
+        Me.errorM05.TabStop = False
+        Me.errorM05.Visible = False
+        '
+        'errorY05
+        '
+        Me.errorY05.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorY05.Location = New System.Drawing.Point(577, 99)
+        Me.errorY05.Name = "errorY05"
+        Me.errorY05.Size = New System.Drawing.Size(20, 20)
+        Me.errorY05.TabIndex = 60
+        Me.errorY05.TabStop = False
+        Me.errorY05.Visible = False
+        '
+        'txtYear05
+        '
+        Me.txtYear05.Location = New System.Drawing.Point(451, 99)
+        Me.txtYear05.Name = "txtYear05"
+        Me.txtYear05.Size = New System.Drawing.Size(120, 20)
+        Me.txtYear05.TabIndex = 57
+        '
         'Label6
         '
         Me.Label6.AccessibleRole = System.Windows.Forms.AccessibleRole.None
@@ -520,16 +653,6 @@ Partial Class frmReport
         Me.Label6.Size = New System.Drawing.Size(272, 20)
         Me.Label6.TabIndex = 55
         Me.Label6.Text = "Customers being due for checkin"
-        '
-        'cbYear05
-        '
-        Me.cbYear05.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbYear05.FormattingEnabled = True
-        Me.cbYear05.Items.AddRange(New Object() {"2016", "2017", "2018"})
-        Me.cbYear05.Location = New System.Drawing.Point(443, 99)
-        Me.cbYear05.Name = "cbYear05"
-        Me.cbYear05.Size = New System.Drawing.Size(120, 21)
-        Me.cbYear05.TabIndex = 32
         '
         'cbMonth05
         '
@@ -570,12 +693,15 @@ Partial Class frmReport
         '
         'tabRoomBooking
         '
+        Me.tabRoomBooking.Controls.Add(Me.errorR06)
+        Me.tabRoomBooking.Controls.Add(Me.errorM06)
+        Me.tabRoomBooking.Controls.Add(Me.errorY06)
+        Me.tabRoomBooking.Controls.Add(Me.txtYear06)
         Me.tabRoomBooking.Controls.Add(Me.Label7)
         Me.tabRoomBooking.Controls.Add(Me.lbRoom)
         Me.tabRoomBooking.Controls.Add(Me.cbRoom06)
         Me.tabRoomBooking.Controls.Add(Me.cbMonth06)
         Me.tabRoomBooking.Controls.Add(Me.Label1)
-        Me.tabRoomBooking.Controls.Add(Me.cbYear06)
         Me.tabRoomBooking.Controls.Add(Me.Label2)
         Me.tabRoomBooking.Controls.Add(Me.btnReport6)
         Me.tabRoomBooking.Location = New System.Drawing.Point(4, 22)
@@ -585,6 +711,43 @@ Partial Class frmReport
         Me.tabRoomBooking.TabIndex = 5
         Me.tabRoomBooking.Text = "Room Booking"
         Me.tabRoomBooking.UseVisualStyleBackColor = True
+        '
+        'errorR06
+        '
+        Me.errorR06.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorR06.Location = New System.Drawing.Point(260, 106)
+        Me.errorR06.Name = "errorR06"
+        Me.errorR06.Size = New System.Drawing.Size(20, 21)
+        Me.errorR06.TabIndex = 60
+        Me.errorR06.TabStop = False
+        Me.errorR06.Visible = False
+        '
+        'errorM06
+        '
+        Me.errorM06.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorM06.Location = New System.Drawing.Point(449, 106)
+        Me.errorM06.Name = "errorM06"
+        Me.errorM06.Size = New System.Drawing.Size(20, 20)
+        Me.errorM06.TabIndex = 59
+        Me.errorM06.TabStop = False
+        Me.errorM06.Visible = False
+        '
+        'errorY06
+        '
+        Me.errorY06.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorY06.Location = New System.Drawing.Point(622, 106)
+        Me.errorY06.Name = "errorY06"
+        Me.errorY06.Size = New System.Drawing.Size(20, 20)
+        Me.errorY06.TabIndex = 58
+        Me.errorY06.TabStop = False
+        Me.errorY06.Visible = False
+        '
+        'txtYear06
+        '
+        Me.txtYear06.Location = New System.Drawing.Point(487, 105)
+        Me.txtYear06.Name = "txtYear06"
+        Me.txtYear06.Size = New System.Drawing.Size(120, 20)
+        Me.txtYear06.TabIndex = 57
         '
         'Label7
         '
@@ -635,16 +798,6 @@ Partial Class frmReport
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Year"
         '
-        'cbYear06
-        '
-        Me.cbYear06.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbYear06.FormattingEnabled = True
-        Me.cbYear06.Items.AddRange(New Object() {"2016", "2017", "2018"})
-        Me.cbYear06.Location = New System.Drawing.Point(503, 105)
-        Me.cbYear06.Name = "cbYear06"
-        Me.cbYear06.Size = New System.Drawing.Size(120, 21)
-        Me.cbYear06.TabIndex = 12
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -665,10 +818,12 @@ Partial Class frmReport
         '
         'tabCBReport01
         '
+        Me.tabCBReport01.Controls.Add(Me.errorCBRM)
+        Me.tabCBReport01.Controls.Add(Me.errorCBRY)
+        Me.tabCBReport01.Controls.Add(Me.txtYearCBR)
         Me.tabCBReport01.Controls.Add(Me.Label8)
         Me.tabCBReport01.Controls.Add(Me.cbMonthCBR)
         Me.tabCBReport01.Controls.Add(Me.lbYearCBR)
-        Me.tabCBReport01.Controls.Add(Me.cbYearCBR)
         Me.tabCBReport01.Controls.Add(Me.lbMonthCBR)
         Me.tabCBReport01.Controls.Add(Me.btnReportCBR)
         Me.tabCBReport01.Location = New System.Drawing.Point(4, 22)
@@ -678,6 +833,13 @@ Partial Class frmReport
         Me.tabCBReport01.TabIndex = 6
         Me.tabCBReport01.Text = "CBR Bookings"
         Me.tabCBReport01.UseVisualStyleBackColor = True
+        '
+        'txtYearCBR
+        '
+        Me.txtYearCBR.Location = New System.Drawing.Point(421, 94)
+        Me.txtYearCBR.Name = "txtYearCBR"
+        Me.txtYearCBR.Size = New System.Drawing.Size(120, 20)
+        Me.txtYearCBR.TabIndex = 57
         '
         'Label8
         '
@@ -709,16 +871,6 @@ Partial Class frmReport
         Me.lbYearCBR.Size = New System.Drawing.Size(29, 13)
         Me.lbYearCBR.TabIndex = 14
         Me.lbYearCBR.Text = "Year"
-        '
-        'cbYearCBR
-        '
-        Me.cbYearCBR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbYearCBR.FormattingEnabled = True
-        Me.cbYearCBR.Items.AddRange(New Object() {"2016", "2017", "2018"})
-        Me.cbYearCBR.Location = New System.Drawing.Point(421, 93)
-        Me.cbYearCBR.Name = "cbYearCBR"
-        Me.cbYearCBR.Size = New System.Drawing.Size(120, 21)
-        Me.cbYearCBR.TabIndex = 12
         '
         'lbMonthCBR
         '
@@ -872,6 +1024,26 @@ Partial Class frmReport
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
         '
+        'errorCBRY
+        '
+        Me.errorCBRY.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorCBRY.Location = New System.Drawing.Point(558, 94)
+        Me.errorCBRY.Name = "errorCBRY"
+        Me.errorCBRY.Size = New System.Drawing.Size(20, 20)
+        Me.errorCBRY.TabIndex = 62
+        Me.errorCBRY.TabStop = False
+        Me.errorCBRY.Visible = False
+        '
+        'errorCBRM
+        '
+        Me.errorCBRM.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorCBRM.Location = New System.Drawing.Point(303, 93)
+        Me.errorCBRM.Name = "errorCBRM"
+        Me.errorCBRM.Size = New System.Drawing.Size(20, 20)
+        Me.errorCBRM.TabIndex = 63
+        Me.errorCBRM.TabStop = False
+        Me.errorCBRM.Visible = False
+        '
         'frmReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -886,22 +1058,36 @@ Partial Class frmReport
         Me.TC_Report.ResumeLayout(False)
         Me.tabCusBook.ResumeLayout(False)
         Me.tabCusBook.PerformLayout()
+        CType(Me.error01, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabRoomLastBook.ResumeLayout(False)
         Me.tabRoomLastBook.PerformLayout()
+        CType(Me.error02, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabCusBookPeriod.ResumeLayout(False)
         Me.tabCusBookPeriod.PerformLayout()
+        CType(Me.errorC03, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorY03, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorM03, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbMonthBooking.ResumeLayout(False)
         Me.tbMonthBooking.PerformLayout()
+        CType(Me.errorM04, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorY04, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabDueCheckin.ResumeLayout(False)
         Me.tabDueCheckin.PerformLayout()
+        CType(Me.errorM05, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorY05, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabRoomBooking.ResumeLayout(False)
         Me.tabRoomBooking.PerformLayout()
+        CType(Me.errorR06, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorM06, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorY06, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabCBReport01.ResumeLayout(False)
         Me.tabCBReport01.PerformLayout()
         Me.tabInvoice.ResumeLayout(False)
         Me.tabInvoice.PerformLayout()
         Me.BookingStrip.ResumeLayout(False)
         Me.BookingStrip.PerformLayout()
+        CType(Me.errorCBRY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorCBRM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -917,18 +1103,16 @@ Partial Class frmReport
     Friend WithEvents cbRoom06 As ComboBox
     Friend WithEvents cbMonth06 As ComboBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents cbYear06 As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents btnReport6 As Button
     Friend WithEvents cbMonth04 As ComboBox
     Friend WithEvents lbYear04 As Label
-    Friend WithEvents cbYear04 As ComboBox
     Friend WithEvents lbMonth04 As Label
     Friend WithEvents btnReport04 As Button
     Friend WithEvents lbFirstName As Label
     Friend WithEvents lbLastName As Label
     Friend WithEvents lbCustomerID As Label
-    Friend WithEvents cbCustomerID As ComboBox
+    Friend WithEvents cbCustomerID01 As ComboBox
     Friend WithEvents txtLN As TextBox
     Friend WithEvents txtFN As TextBox
     Friend WithEvents btnReport01 As Button
@@ -947,7 +1131,6 @@ Partial Class frmReport
     Friend WithEvents lbFN03 As Label
     Friend WithEvents lbLN03 As Label
     Friend WithEvents lbCusID03 As Label
-    Friend WithEvents cbYear05 As ComboBox
     Friend WithEvents cbMonth05 As ComboBox
     Friend WithEvents lbYear05 As Label
     Friend WithEvents lbMonth05 As Label
@@ -965,7 +1148,6 @@ Partial Class frmReport
     Friend WithEvents Label8 As Label
     Friend WithEvents cbMonthCBR As ComboBox
     Friend WithEvents lbYearCBR As Label
-    Friend WithEvents cbYearCBR As ComboBox
     Friend WithEvents lbMonthCBR As Label
     Friend WithEvents btnReportCBR As Button
     Friend WithEvents tabInvoice As TabPage
@@ -983,4 +1165,22 @@ Partial Class frmReport
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents InvoiceToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents txtYear04 As TextBox
+    Friend WithEvents txtYear05 As TextBox
+    Friend WithEvents txtYear06 As TextBox
+    Friend WithEvents txtYearCBR As TextBox
+    Friend WithEvents errorY06 As PictureBox
+    Friend WithEvents errorR06 As PictureBox
+    Friend WithEvents errorM06 As PictureBox
+    Friend WithEvents errorM05 As PictureBox
+    Friend WithEvents errorY05 As PictureBox
+    Friend WithEvents errorM04 As PictureBox
+    Friend WithEvents errorY04 As PictureBox
+    Friend WithEvents errorY03 As PictureBox
+    Friend WithEvents errorM03 As PictureBox
+    Friend WithEvents error01 As PictureBox
+    Friend WithEvents error02 As PictureBox
+    Friend WithEvents errorC03 As PictureBox
+    Friend WithEvents errorCBRM As PictureBox
+    Friend WithEvents errorCBRY As PictureBox
 End Class

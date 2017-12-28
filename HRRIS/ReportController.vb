@@ -110,14 +110,14 @@ Public Class ReportController
             oCommand.Connection = oConnection
 
             oCommand.CommandText =
-                    "SELECT DISTINCT Year(booking_date) as Year FROM booking;"
+                    "SELECT booking_date FROM booking;"
             oCommand.Prepare()
             Dim oDataReader = oCommand.ExecuteReader()
-
+            'CStr(Format(CDate(oDataReader("invoice_date")), "MMMM"))
             Dim htTempData As Hashtable
             Do While oDataReader.Read() = True
                 htTempData = New Hashtable
-                htTempData("Year1") = CStr(oDataReader("Year"))
+                htTempData("Year1") = CStr(Format(CDate(oDataReader("booking_date")), "YYYYY"))
                 lsData.Add(htTempData)
             Loop
             Debug.Print("Years were found.")
@@ -163,7 +163,7 @@ Public Class ReportController
                 htTempData("Booking ID") = CInt(oDataReader("booking_id"))
                 htTempData("Booking Date") = CDate(oDataReader("booking_date"))
                 htTempData("Customer ID") = CInt(oDataReader("customer_id"))
-                htTempData("Numbers Of  Day") = CInt(oDataReader("num_days"))
+                htTempData("Numbers Of Days") = CInt(oDataReader("num_days"))
                 htTempData("Checkin Date") = CDate(oDataReader("checkin_date"))
                 htTempData("Checkout Date") = CDate(oDataReader("checkout_date"))
                 htTempData("Total Price") = CInt(oDataReader("total_price"))
@@ -454,6 +454,7 @@ Public Class ReportController
                 htTempData("Booking ID") = CStr(oDataReader("booking_id"))
                 htTempData("First Name") = CStr(oDataReader("firstname"))
                 htTempData("Last Name") = CStr(oDataReader("lastname"))
+                htTempData("Booking Date") = CDate(oDataReader("booking_date"))
                 htTempData("Checkin Date") = CStr(oDataReader("checkin_date"))
                 htTempData("Checkout Date") = CStr(oDataReader("checkout_date"))
                 htTempData("Numbers Of Days") = CStr(oDataReader("num_days"))
@@ -859,7 +860,7 @@ Public Class ReportController
                 Loop
                 Debug.Print("The records were found.")
             Else
-                MsgBox("No Bookings were found on this day")
+                '  MsgBox("No Bookings were found on this day")
             End If
 
         Catch ex As Exception
@@ -887,6 +888,7 @@ Public Class ReportController
             Debug.Print("sParam: " & sParam)
             System.Diagnostics.Process.Start(sParam)
         Else
+            MsgBox("No bookings were found for this room")
             Debug.Print("No records were found. Terminate generating report")
         End If
 
@@ -1065,6 +1067,7 @@ Public Class ReportController
     'create break report for Invoice
     Public Sub createInvoiceReport()
         Dim lsData = generateInvoice()
+
         If lsData.Count > 0 Then
             Debug.Print("Invoice Report")
             Dim sReportTitle = "Invoice for the current year"
@@ -1076,6 +1079,7 @@ Public Class ReportController
             Debug.Print("sParam: " & sParam)
             System.Diagnostics.Process.Start(sParam)
         Else
+            MsgBox("No Invoice found")
             Debug.Print("No records were found. Terminate generating report")
         End If
 
