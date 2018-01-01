@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Help</title>
+    <style>
+          h1 {
+                text-align:center;
+                color: gradient;
+          }
+          body {
+                margin: 40px;
+                font-size: 16px;
+          }
+          figcaption {
+                font-style: italic;
+                text-align: center;
+          }
+          figure {
+                text-align: center;
+                margin-top:20px;
+          }
+         h1 ,h2 {
+                color: #6495ED;
+          }
+    </style>
+  </head>
+  <body>
+      <h1 style="font-size: 40px">Help</h1>
+      <h3> Student Information
+        </h3>
+        <p>
+           Name: Pham Tran Van Anh </br>
+           Student ID: s3557184</br>
+    
+        </p>
+        <h3> Course Information
+        </h3>
+        <p>
+          Time: Semester C 2017 </br>
+          Course code: ISYS2116 </br>
+          Course name: Information Systems Solutions and Design</br>
+          Tutor: Ashish Das
+        </p>
+      <h2>Use case</h2>
+      <p>Use case diagram for main functions in the booking table</p>
+      <figure>
+            <img src="image/UC.jpg" alt="Use case diagram">
+            <figcaption>Use case diagram of main functions in booking</figcaption>
+      </figure>
+      <p>Use case for inserting a record in the booking table</p>
+      <figure>
+            <img src="image/UC2.png" alt="extended Use case" height="500">
+            <figcaption>Extended Use Case of inserting a new booking record</figcaption>
+      </figure>
+      <h2>ERD</h2>
+      <figure>
+            <img src="image/erd.png" height="500">
+            <figcaption>ERD</figcaption>
+      </figure>
+      <h2>Screen Mockup</h2>
+      <figure>
+            <img src="image/1.png" height="400">
+            <figcaption>Main Menu</figcaption>
+      </figure>
+      <figure>
+            <img src="image/2.png"  height="400" width="500">
+            <figcaption>Customer Management Form</figcaption>
+      </figure>
+      <figure>
+            <img src="image/3.png"  height="400" width="500">
+            <figcaption>Room Management Form</figcaption>
+      </figure>
+      <figure>
+            <img src="image/4.png" height="400" width="500">
+            <figcaption>Booking Management Form</figcaption>
+      </figure>
+      <figure>
+            <img src="image/5.png"  height="400" width="500">
+            <figcaption>Report 01: The last booking of a customer</figcaption>
+      </figure>
+      <figure>
+            <img src="image/6.png"  height="400" width="500">
+            <figcaption>Report 02: The last booking of a room</figcaption>
+      </figure>
+      <figure>
+            <img src="image/7.png"  height="400" width="500">
+            <figcaption>Report 03: Booking history of a customer</figcaption>
+      </figure>
+      <figure>
+            <img src="image/8.png"  height="400" width="500">
+            <figcaption>Report 04: All bookings in a given month year</figcaption>
+      </figure>
+      <figure>
+            <img src="image/9.png"  height="400" width="500">
+            <figcaption>Report 05: Customer due for checkin</figcaption>
+      </figure>
+      <figure>
+            <img src="image/10.png"  height="400" width="500">
+            <figcaption>Report 06: All bookings of a room in a given month year</figcaption>
+      </figure>
+      <figure>
+            <img src="image/11.png"  height="400" width="500">
+            <figcaption>Control Break Report</figcaption>
+      </figure>
+      <figure>
+            <img src="image/12.png"  height="400" width="500">
+            <figcaption>Invoice</figcaption>
+      </figure>
+
+      <h2>Algorithm</h2>
+      <h3>Inserting a record in the booking table</h3>
+      <p> Once user finishes selecting room type, checkin and chekout date, the application will search database for available rooms that suit user's needs. The room list is shown as a dropdown so that user can choose easily. When a particular room is chosen, based on the room number,the application will automatically get the price as well as calculate total price as display it on the screen. 
+      When user click Insert, the application will start checking all the fields firstly. For instance, room number and customer cannot be empty. Number of guests must be numeric value and in the allowed range for each room type. If all fields are valid, the applicatin will insert to database the given input. Otherwise,error tooltips with message will be shown to alert user about their error and let them correct.</p>
+      <h2>Struture Chart</h2>
+      <figure>
+            <img src="image/13.png" height="300" >
+            <figcaption>Structure Chart</figcaption>
+      </figure>
+      <h2>Instructions on booking a room</h2>
+      <ol>
+          <li>Select Room Type from dropdown list</li>
+          <li>Select Checkin - Checkout date. By default, they are the current date</li>
+          <li>Click Search to find the available rooms during that period</li>
+          <li>Select Room Number from dropdown list. Price, Number of days, and Total are automatically generated.</li>
+          <li>Enter customer's first name and last name</li>
+          <li>Click Search to get the customer ID. If the customer profile is not on the database, click Yes button on pop up message to create a new profile</li>
+          <li>Select Booking Date which is set to current date by default</li>
+          <li>Enter Number of guests</li>
+          <li>Enter comments if customer prefer</li>
+          <li>Click Insert. Correct input field if there are any invalid ones</li>
+      </ol>
+  </body>
+</html>
