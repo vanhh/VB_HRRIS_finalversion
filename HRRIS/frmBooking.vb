@@ -31,11 +31,12 @@ Public Class frmBooking
     'insert button - insert booking info to database
     Private Sub btnInsert_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsert.Click
         Dim htData As Hashtable = New Hashtable
-        Dim bAllValid = validateFormData()
+        Dim bAllValid1 = checkdate() 'check to see if checkin-out day is valid or not
+        Dim bAllValid = validateFormData() 'check other fields
 
         bNotEmpty = oValidation.isEmpty(txtBookingID.Text)
         If bNotEmpty = False Then
-            If bAllValid Then
+            If bAllValid And bAllValid1 Then
                 htData("RoomID") = txtRoomID.Text
                 htData("CustomerNo") = txtBookingCustomer.Text
                 htData("BookingDate") = dtBookingDate.Text()
@@ -68,8 +69,8 @@ Public Class frmBooking
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Dim htData As Hashtable = New Hashtable
         Dim bAllValid = validateFormData()
-
-        If bAllValid Then
+        Dim bAllValid1 = checkdate()
+        If bAllValid And bAllValid1 Then
             htData("RoomID") = txtRoomID.Text
             htData("CustomerNo") = txtBookingCustomer.Text
             htData("BookingDate") = dtBookingDate.Text()
@@ -102,7 +103,7 @@ Public Class frmBooking
             Dim htData As Hashtable = New Hashtable
             htData("BookingID") = txtBookingID.Text
             Dim iNumRows = oController.delete(htData)
-            If iNumRows >= 0 Then
+            If iNumRows > 0 Then
                 Dim clear = clearField()
                 If clear Then
                     Debug.Print("all field was cleared")
@@ -114,6 +115,7 @@ Public Class frmBooking
     '--------------------------------
     'VALIDATION
 
+    'check date validated or not
     Private Function checkdate() As Boolean
 
         Dim bAllFieldsValid As Boolean
@@ -309,7 +311,6 @@ Public Class frmBooking
 
     End Sub
 
-
     'when user click Find button - >find available roomm based on the selected type, checkin checkout date
     Private Sub btnCheck_Click(sender As Object, e As EventArgs) Handles btnFindRoom.Click
 
@@ -438,6 +439,7 @@ Public Class frmBooking
         dtCheckout.Enabled = True
         cboRoomNumber.Enabled = True
         cboRoomType.Enabled = True
+        btnFindRoom.Enabled = True
 
         Return clearDone
     End Function

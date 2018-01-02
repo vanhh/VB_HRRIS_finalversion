@@ -13,6 +13,7 @@ Public Class RoomController
     Public Const CONNECTION_STRING As String =
     "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=HRRIS_DB.accdb"
 
+    '-------------------------- CUD functions ------------------------------
     'insert room info to dtb
     Public Function insert(ByVal htData As Hashtable) As Integer
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -179,9 +180,10 @@ Public Class RoomController
 
         End Try
 
-        Return iNumRows
+        Return iNumRows2
     End Function
 
+    '------------------------------ OTHERS -----------------------------
     'check room number to make sure that user does not duplicate the number
     Public Function checkRoom(room_number As String) As List(Of Hashtable)
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -344,7 +346,7 @@ Public Class RoomController
 
         Catch ex As Exception
             Debug.Print("ERROR: " & ex.Message)
-            MsgBox("An error occurred. The records could not be found!")
+            ' MsgBox("An error occurred. The records could not be found!")
         Finally
             oConnection.Close()
         End Try

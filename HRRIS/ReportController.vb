@@ -96,45 +96,7 @@ Public Class ReportController
 
     End Function
 
-    'find all year available 
-    Public Function getYear() As List(Of Hashtable)
-
-        Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
-        Dim lsData As New List(Of Hashtable)
-
-        Try
-            Debug.Print("Connection string: " & oConnection.ConnectionString)
-
-            oConnection.Open()
-            Dim oCommand As OleDbCommand = New OleDbCommand
-            oCommand.Connection = oConnection
-
-            oCommand.CommandText =
-                    "SELECT booking_date FROM booking;"
-            oCommand.Prepare()
-            Dim oDataReader = oCommand.ExecuteReader()
-            'CStr(Format(CDate(oDataReader("invoice_date")), "MMMM"))
-            Dim htTempData As Hashtable
-            Do While oDataReader.Read() = True
-                htTempData = New Hashtable
-                htTempData("Year1") = CStr(Format(CDate(oDataReader("booking_date")), "YYYYY"))
-                lsData.Add(htTempData)
-            Loop
-            Debug.Print("Years were found.")
-
-        Catch ex As Exception
-            Debug.Print("ERROR: " & ex.Message)
-            MsgBox("An error occurred. Years could not be found!")
-
-        Finally
-            oConnection.Close()
-        End Try
-
-        Return lsData
-
-    End Function
-
-    'REPORT 01
+    '-----------------------------------REPORT 01-----------------------------------------------------------------
     'find the last bookings of a customer - report 01
     Public Function findLastBookingbyCus(id As String) As List(Of Hashtable)
 
@@ -205,7 +167,7 @@ Public Class ReportController
 
     End Sub
 
-    'REPORT 02
+    '------------------------------------------------ REPORT 02 -----------------------------------------------
     'find the last bookings of a room - report 02
     Public Function findLastBookingbyRoom(id As String) As List(Of Hashtable)
 
@@ -276,7 +238,7 @@ Public Class ReportController
 
     End Sub
 
-    'REPORT 03
+    '--------------------------------------- REPORT 03 -------------------------------------------------------------------
     'find the bookings of a customer in a given period- report 03
     Public Function findBookingbyCus(id As String, month As String, year As String) As List(Of Hashtable)
 
@@ -351,7 +313,7 @@ Public Class ReportController
 
     End Sub
 
-    'REPORT 04
+    '------------------------------------------------------------ REPORT 04 -------------------------------------------------
     'find all bookings for a given month-year  to generate report 04
     Public Function findAllBookingbyMonth(Month As String, Year As String) As List(Of Hashtable)
 
@@ -422,7 +384,7 @@ Public Class ReportController
 
     End Sub
 
-    'REPORT 05
+    '-----------------------------------------------------------  REPORT 05 ------------------------------------
     'find customers  who are due for checkin in a given month-year
     Public Function findDueCustomer(month As String, year As String) As List(Of Hashtable)
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -570,7 +532,7 @@ Public Class ReportController
         Return sTable
     End Function
 
-    'REPORT 06
+    '---------------------------------------------------- REPORT 06 ----------------------------------------------------------
     'find all rooms to display on the dropdown box selection in tab report 06- Room Bookings
     Public Function findAllRoom() As List(Of Hashtable)
 
@@ -775,7 +737,7 @@ Public Class ReportController
         Return sTable
     End Function
 
-    'CONTROL BREAK REPORT
+    '-------------------------------- CONTROL BREAK REPORT---------------------------------------------------------
 
     'find all booking to generate break even report
     Public Function findAllBooking() As List(Of Hashtable)

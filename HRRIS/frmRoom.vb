@@ -17,6 +17,7 @@ Public Class frmRoom
     Dim search As Boolean = False
     Dim htData As Hashtable = New Hashtable
 
+    'insert to database a new room info
     Private Sub btnInsert_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInsert.Click
         Dim htData As Hashtable = New Hashtable
         Dim bAllValid = validateFormData()
@@ -50,6 +51,57 @@ Public Class frmRoom
 
     End Sub
 
+    'update records
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        Dim htData As Hashtable = New Hashtable
+        Dim bAllValid = validateFormData2()
+
+        If bAllValid Then
+            htData("RoomNumber") = txtRoomNo.Text()
+            htData("RoomType") = cboType.Text()
+            htData("Price") = txtPrice.Text()
+            htData("NumOfBeds") = txtBeds.Text()
+            htData("Availability") = cboAvailability.Text()
+            htData("Floor") = txtFloor.Text()
+            htData("Description") = txtDescription.Text()
+            htData("RoomID") = txtRoomID.Text()
+
+
+
+            Dim iNumRows = oRoomController.update(htData)
+            Debug.Print(CStr(iNumRows))
+
+            If iNumRows > 0 Then
+                Dim clear = clearField()
+                If clear Then
+                    Debug.Print("all field was cleared")
+                End If
+            End If
+        Else
+
+        End If
+    End Sub
+
+    'delete records
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim roomID = txtRoomID.Text
+        If MsgBox("Are you sure you want to delete? You can't undo this action", MsgBoxStyle.YesNo, "Delete Confirmation") = MsgBoxResult.Yes Then
+            Dim oRoomController As RoomController = New RoomController()
+            Dim htData As Hashtable = New Hashtable
+            htData("RoomID") = txtRoomID.Text()
+            Dim iNumRows = oRoomController.delete(htData)
+            If iNumRows > 0 Then
+                Dim clear = clearField()
+                If clear Then
+                    Debug.Print("all field was cleared")
+                End If
+            End If
+        End If
+
+    End Sub
+
+    '----------------------------- VALIDATION -------------------------------
+    'validation for inserting functions
     Private Function validateFormData() As Boolean
         Dim oValidation As New Validation
         Dim bIsValid As Boolean
@@ -193,57 +245,7 @@ Public Class frmRoom
         Return bAllFieldsValid
     End Function
 
-    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        Dim htData As Hashtable = New Hashtable
-        Dim bAllValid = validateFormData2()
-
-        If bAllValid Then
-            htData("RoomNumber") = txtRoomNo.Text()
-            htData("RoomType") = cboType.Text()
-            htData("Price") = txtPrice.Text()
-            htData("NumOfBeds") = txtBeds.Text()
-            htData("Availability") = cboAvailability.Text()
-            htData("Floor") = txtFloor.Text()
-            htData("Description") = txtDescription.Text()
-            htData("RoomID") = txtRoomID.Text()
-
-
-
-            Dim iNumRows = oRoomController.update(htData)
-            Debug.Print(CStr(iNumRows))
-
-            If iNumRows > 0 Then
-                Dim clear = clearField()
-                If clear Then
-                    Debug.Print("all field was cleared")
-                End If
-            End If
-        Else
-
-        End If
-    End Sub
-    'clear field
-    Private Function clearField() As Boolean
-        Dim clearDone As Boolean
-        clearDone = True
-
-        cboAvailability.SelectedIndex = 0
-        txtDescription.Text = ""
-        txtFloor.Text = ""
-        txtPrice.Text = ""
-        txtRoomNo.Text = ""
-        cboType.SelectedIndex = 0
-        txtRoomID.Text = ""
-        txtRoomNo.Focus()
-
-        btnFirst.Enabled = False
-        btnPrevious.Enabled = False
-        btnNext.Enabled = False
-        btnLast.Enabled = False
-        txtRoomNo.Enabled = True
-        Return clearDone
-    End Function
-
+    'validation for updating
     Private Function validateFormData2() As Boolean
         Dim oValidation As New Validation
         Dim bIsValid As Boolean
@@ -352,30 +354,37 @@ Public Class frmRoom
 
         Return bAllFieldsValid
     End Function
+    '------------------------------------ OTHER FUNCTIONS ---------------------
+    'clear field
+    Private Function clearField() As Boolean
+        Dim clearDone As Boolean
+        clearDone = True
 
+        cboAvailability.SelectedIndex = 0
+        txtDescription.Text = ""
+        txtFloor.Text = ""
+        txtPrice.Text = ""
+        txtRoomNo.Text = ""
+        cboType.SelectedIndex = 0
+        txtRoomID.Text = ""
+        txtRoomNo.Focus()
+
+        btnFirst.Enabled = False
+        btnPrevious.Enabled = False
+        btnNext.Enabled = False
+        btnLast.Enabled = False
+        txtRoomNo.Enabled = True
+
+        Return clearDone
+    End Function
+
+    'Clear all fields
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
         If MsgBox("Are you sure you want to cllear all? Unsaved data will be lost?", MsgBoxStyle.YesNo, "Clear Confirmation") = MsgBoxResult.Yes Then
             Dim clear = clearField()
             If clear Then
                 Debug.Print("all field was cleared")
             End If
-        End If
-    End Sub
-
-    Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If MsgBox("Are you sure you want to close?", MsgBoxStyle.YesNo, "Exit Confirmation") = MsgBoxResult.Yes Then
-            Me.Close()
-        ElseIf CBool(MsgBoxResult.No) Then
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub btnHome_Click(sender As Object, e As EventArgs)
-        If MsgBox("Are you sure you want to go to Home? Unsaved data will be lost", MsgBoxStyle.YesNo, "Home Confirmation") = MsgBoxResult.Yes Then
-            frmHome.Show()
-            Me.Hide()
-        Else
-            Me.Show()
         End If
     End Sub
 
@@ -442,7 +451,6 @@ Public Class frmRoom
 
     End Sub
 
-
     'populate form field
     Private Sub populateFormField(room As Hashtable)
         txtRoomNo.Text = CStr(room("RoomNumber"))
@@ -454,6 +462,8 @@ Public Class frmRoom
         txtDescription.Text = CStr(room("Description"))
         txtRoomID.Text = CStr(room("RoomID"))
     End Sub
+
+    'when open the form, populate gridview and disable unnecessary buttons
     Private Sub frmRoom_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'gridview 
@@ -507,23 +517,7 @@ Public Class frmRoom
 
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        Dim roomID = txtRoomID.Text
-        If MsgBox("Are you sure you want to delete? You can't undo this action", MsgBoxStyle.YesNo, "Delete Confirmation") = MsgBoxResult.Yes Then
-            Dim oRoomController As RoomController = New RoomController()
-            Dim htData As Hashtable = New Hashtable
-            htData("RoomID") = txtRoomID.Text()
-            Dim iNumRows = oRoomController.delete(htData)
-            If iNumRows > 0 Then
-                Dim clear = clearField()
-                If clear Then
-                    Debug.Print("all field was cleared")
-                End If
-            End If
-        End If
-
-    End Sub
-
+    'when mouse click on the data, info will be shown on the form
     Private Sub gridviewRoom_MouseClick(sender As Object, e As MouseEventArgs) Handles gridviewRoom.MouseClick
         Dim id As String
         id = gridviewRoom.CurrentRow.Cells(0).Value.ToString()
@@ -537,6 +531,7 @@ Public Class frmRoom
         Next
     End Sub
 
+    'refresh to update the gridview
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         Dim ds As DataSet = oRoomController.populateRoomGridView()
         Dim source As New BindingSource
@@ -549,7 +544,6 @@ Public Class frmRoom
 
             'turn off auto generate columns
             gridviewRoom.AutoGenerateColumns = False
-
 
             'Set Columns Count
             gridviewRoom.ColumnCount = 5
@@ -583,8 +577,153 @@ Public Class frmRoom
 
     End Sub
 
-    '-------------------------------------------------------------
-    'navigation
+
+
+    '------------------------------------------------- TOOLSTRIP ---------------------
+    'open customer form
+    Private Sub CustomerManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerManagementToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Customer Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmCustomer.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
+
+    'booking form
+    Private Sub BookingManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookingManagementToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Booking Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmBooking.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
+
+    ' open report form
+    Private Sub ReportManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportManagementToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Report Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmReport.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
+
+    'open home form
+    Private Sub HomeToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles HomeToolStripMenuItem1.Click
+        If MsgBox("Are you sure you want to go to Home? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmHome.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
+
+    'exit the form
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
+        If MsgBox("Are you sure you want to close?", MsgBoxStyle.YesNo, "Exit Confirmation") = MsgBoxResult.Yes Then
+            Me.Close()
+        ElseIf CBool(MsgBoxResult.No) Then
+            Me.Show()
+        End If
+    End Sub
+
+    'open a new form (clear all the form fields)
+    Private Sub HomeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HomeToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to have a new form? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            Dim clear = clearField()
+            If clear Then
+                Debug.Print("all field was cleared")
+            End If
+        Else
+        End If
+    End Sub
+
+    'open report form
+    Private Sub GenerateReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerateReportToolStripMenuItem.Click
+        If MsgBox("Are you sure you want to go to Report Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
+            frmReport.Show()
+            Me.Hide()
+        Else
+            Me.Show()
+        End If
+    End Sub
+
+    Private Sub InvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InvoiceToolStripMenuItem.Click
+        Dim rController As ReportController = New ReportController
+        rController.createInvoiceReport()
+    End Sub
+
+    'about page
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim sParam As String = """" & Application.StartupPath & "\about.html"""
+        Debug.Print("sParam: " & sParam)
+        System.Diagnostics.Process.Start(sParam)
+    End Sub
+
+    'help page
+    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
+        Dim sParam As String = """" & Application.StartupPath & "\help.html"""
+        Debug.Print("sParam: " & sParam)
+        System.Diagnostics.Process.Start(sParam)
+    End Sub
+
+    '--------------------- NAVIGATION BUTTONS ----------------------------
+    Dim validation As New Validation
+    'enable or  disable navigation buttons
+    Private Sub txtRoomID_TextChanged(sender As Object, e As EventArgs) Handles txtRoomID.TextChanged
+        Dim bNotEmpty As Boolean
+        bNotEmpty = validation.isEmpty(txtRoomID.Text)
+        If bNotEmpty Then
+            txtRoomNo.Enabled = False
+            If search = False Then
+                mdata = oRoomController.findAllRoom()
+
+                If iCurrentIndex = 0 Then
+                    btnFirst.Enabled = False
+                    btnPrevious.Enabled = False
+                Else
+                    btnFirst.Enabled = True
+                    btnPrevious.Enabled = True
+                End If
+
+                If iCurrentIndex = mdata.Count - 1 Then
+                    btnNext.Enabled = False
+                    btnLast.Enabled = False
+                Else
+                    btnNext.Enabled = True
+                    btnLast.Enabled = True
+                End If
+            Else
+                Dim keyword = txtSearch.Text
+                mdata = oRoomController.findRoom(keyword)
+
+                If iCurrentIndex = 0 Then
+                    btnFirst.Enabled = False
+                    btnPrevious.Enabled = False
+                Else
+                    btnFirst.Enabled = True
+                    btnPrevious.Enabled = True
+                End If
+
+                If iCurrentIndex = mdata.Count - 1 Then
+                    btnNext.Enabled = False
+                    btnLast.Enabled = False
+                Else
+                    btnNext.Enabled = True
+                    btnLast.Enabled = True
+                End If
+            End If
+        Else
+            btnNext.Enabled = False
+            btnLast.Enabled = False
+            btnFirst.Enabled = False
+            btnPrevious.Enabled = False
+        End If
+
+    End Sub
+
     Dim mdata As New List(Of Hashtable)
 
     Private Sub btnFirst_Click(sender As Object, e As EventArgs) Handles btnFirst.Click
@@ -654,141 +793,4 @@ Public Class frmRoom
         End If
     End Sub
 
-    '----------------------------------------------------
-    'menu strip
-    Private Sub CustomerManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CustomerManagementToolStripMenuItem.Click
-        If MsgBox("Are you sure you want to go to Customer Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
-            frmCustomer.Show()
-            Me.Hide()
-        Else
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub BookingManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookingManagementToolStripMenuItem.Click
-        If MsgBox("Are you sure you want to go to Booking Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
-            frmBooking.Show()
-            Me.Hide()
-        Else
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub ReportManagementToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportManagementToolStripMenuItem.Click
-        If MsgBox("Are you sure you want to go to Report Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
-            frmReport.Show()
-            Me.Hide()
-        Else
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub HomeToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles HomeToolStripMenuItem1.Click
-        If MsgBox("Are you sure you want to go to Home? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
-            frmHome.Show()
-            Me.Hide()
-        Else
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click
-        If MsgBox("Are you sure you want to close?", MsgBoxStyle.YesNo, "Exit Confirmation") = MsgBoxResult.Yes Then
-            Me.Close()
-        ElseIf CBool(MsgBoxResult.No) Then
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub HomeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HomeToolStripMenuItem.Click
-        If MsgBox("Are you sure you want to have a new form? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
-            Dim clear = clearField()
-            If clear Then
-                Debug.Print("all field was cleared")
-            End If
-        Else
-        End If
-    End Sub
-
-    Dim validation As New Validation
-    'enable or  disable navigation buttons
-    Private Sub txtRoomID_TextChanged(sender As Object, e As EventArgs) Handles txtRoomID.TextChanged
-        Dim bNotEmpty As Boolean
-        bNotEmpty = validation.isEmpty(txtRoomID.Text)
-        If bNotEmpty Then
-            txtRoomNo.Enabled = False
-            If search = False Then
-                mdata = oRoomController.findAllRoom()
-
-                If iCurrentIndex = 0 Then
-                    btnFirst.Enabled = False
-                    btnPrevious.Enabled = False
-                Else
-                    btnFirst.Enabled = True
-                    btnPrevious.Enabled = True
-                End If
-
-                If iCurrentIndex = mdata.Count - 1 Then
-                    btnNext.Enabled = False
-                    btnLast.Enabled = False
-                Else
-                    btnNext.Enabled = True
-                    btnLast.Enabled = True
-                End If
-            Else
-                Dim keyword = txtSearch.Text
-                mdata = oRoomController.findRoom(keyword)
-
-                If iCurrentIndex = 0 Then
-                    btnFirst.Enabled = False
-                    btnPrevious.Enabled = False
-                Else
-                    btnFirst.Enabled = True
-                    btnPrevious.Enabled = True
-                End If
-
-                If iCurrentIndex = mdata.Count - 1 Then
-                    btnNext.Enabled = False
-                    btnLast.Enabled = False
-                Else
-                    btnNext.Enabled = True
-                    btnLast.Enabled = True
-                End If
-            End If
-        Else
-            btnNext.Enabled = False
-            btnLast.Enabled = False
-            btnFirst.Enabled = False
-            btnPrevious.Enabled = False
-        End If
-
-    End Sub
-
-    Private Sub GenerateReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerateReportToolStripMenuItem.Click
-        If MsgBox("Are you sure you want to go to Report Management? Unsaved data will be lost", MsgBoxStyle.YesNo, "Form Confirmation") = MsgBoxResult.Yes Then
-            frmReport.Show()
-            Me.Hide()
-        Else
-            Me.Show()
-        End If
-    End Sub
-
-    Private Sub InvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InvoiceToolStripMenuItem.Click
-        Dim rController As ReportController = New ReportController
-        rController.createInvoiceReport()
-    End Sub
-
-    'about page
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-        Dim sParam As String = """" & Application.StartupPath & "\about.html"""
-        Debug.Print("sParam: " & sParam)
-        System.Diagnostics.Process.Start(sParam)
-    End Sub
-
-    'help page
-    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
-        Dim sParam As String = """" & Application.StartupPath & "\help.html"""
-        Debug.Print("sParam: " & sParam)
-        System.Diagnostics.Process.Start(sParam)
-    End Sub
 End Class

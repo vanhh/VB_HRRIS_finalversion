@@ -115,9 +115,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HRRIS\HRRIS.vbproj">
+    <ProjectReference Include="..\HRRIS\s3557184-Assignment02-HRRIS.vbproj">
       <Project>{a124905c-b273-4ed8-b51f-3daf3e608386}</Project>
-      <Name>HRRIS</Name>
+      <Name>s3557184-Assignment02-HRRIS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

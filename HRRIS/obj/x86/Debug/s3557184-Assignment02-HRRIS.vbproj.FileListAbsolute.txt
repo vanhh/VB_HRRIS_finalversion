@@ -1,0 +1,16 @@
+F:\VB HRRISS\HRRIS\HRRIS\bin\Debug\HRRIS.exe.config
+F:\VB HRRISS\HRRIS\HRRIS\bin\Debug\HRRIS.exe
+F:\VB HRRISS\HRRIS\HRRIS\bin\Debug\HRRIS.pdb
+F:\VB HRRISS\HRRIS\HRRIS\bin\Debug\HRRIS.xml
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\s3557184-Assignment02-HRRIS.vbprojResolveAssemblyReference.cache
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmBooking.resources
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmReport.resources
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmCustomer.resources
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmRoom.resources
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.frmHome.resources
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.Resources.resources
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\s3557184-Assignment02-HRRIS.vbproj.GenerateResource.Cache
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\s3557184-Assignment02-HRRIS.vbproj.CoreCompileInputs.cache
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.exe
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.xml
+F:\VB HRRISS\HRRIS\HRRIS\obj\x86\Debug\HRRIS.pdb

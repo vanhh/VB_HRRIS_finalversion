@@ -74,10 +74,10 @@
   <ItemGroup>
     <Compile Include="CustomerController.vb" />
     <Compile Include="BookingController.vb" />
-    <Compile Include="frmCBReportBooking.Designer.vb">
-      <DependentUpon>frmCBReportBooking.vb</DependentUpon>
+    <Compile Include="frmReport.Designer.vb">
+      <DependentUpon>frmReport.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCBReportBooking.vb">
+    <Compile Include="frmReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Home.Designer.vb">
@@ -128,8 +128,8 @@
     <EmbeddedResource Include="frmBooking.resx">
       <DependentUpon>frmBooking.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCBReportBooking.resx">
-      <DependentUpon>frmCBReportBooking.vb</DependentUpon>
+    <EmbeddedResource Include="frmReport.resx">
+      <DependentUpon>frmReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomer.resx">
       <DependentUpon>frmCustomer.vb</DependentUpon>

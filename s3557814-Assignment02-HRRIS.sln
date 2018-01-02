@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "HRRIS", "HRRIS\HRRIS.vbproj", "{A124905C-B273-4ED8-B51F-3DAF3E608386}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "s3557184-Assignment02-HRRIS", "HRRIS\s3557184-Assignment02-HRRIS.vbproj", "{A124905C-B273-4ED8-B51F-3DAF3E608386}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ValidationUnitTest", "ValidationUnitTest\ValidationUnitTest.vbproj", "{3A16CA2E-F126-4B77-85D8-D106FAFFCAC5}"
 EndProject

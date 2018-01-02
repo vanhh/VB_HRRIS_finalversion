@@ -9,8 +9,9 @@ Option Strict On
 Imports System.Data.OleDb
 
 Public Class CustomerController
-    Public Const CONNECTION_STRING As String = _
+    Public Const CONNECTION_STRING As String =
     "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=HRRIS_DB.accdb"
+    '------------------------- CUD FUNCTIONS
     'insert to database
     Public Function insert(ByVal htData As Hashtable) As Integer
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -121,6 +122,75 @@ Public Class CustomerController
 
     End Function
 
+    'delete customer profiles
+    Public Function delete(ByVal htData As Hashtable) As Integer
+        Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
+        Dim iNumRows As Integer
+        Dim iNumRows2 As Integer
+
+        Try
+            Debug.Print("Connection string: " & oConnection.ConnectionString)
+            oConnection.Open()
+
+            'from invoice table, delete all booking records having that customer info
+            Dim oCommand2 As OleDbCommand = New OleDbCommand
+            oCommand2.Connection = oConnection
+
+            oCommand2.CommandText = "delete invoice.* from invoice inner join booking on invoice.booking_id = booking.booking_id where invoice.booking_id in (select booking_id from booking where customer_id=?)"
+
+            oCommand2.Parameters.Add("CustomerID", OleDbType.Integer, 10)
+            oCommand2.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
+            oCommand2.Prepare()
+            Debug.Print(oCommand2.CommandText)
+            oCommand2.Prepare()
+            oCommand2.ExecuteNonQuery()
+
+            'delete records on booking table having that customer_id
+            Dim oCommand As OleDbCommand = New OleDbCommand
+            oCommand.Connection = oConnection
+
+            oCommand.CommandText = "delete from booking where customer_id = ?"
+            oCommand.Parameters.Add("CustomerID", OleDbType.Integer, 10)
+            oCommand.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
+
+            oCommand.Prepare()
+            iNumRows = oCommand.ExecuteNonQuery()
+            Debug.Print(CStr(iNumRows))
+
+            If iNumRows >= 0 Then
+                Try
+                    Dim oCommand1 As OleDbCommand = New OleDbCommand
+                    oCommand1.Connection = oConnection
+
+                    'delete customer on customer database
+                    oCommand1.CommandText = "delete from customer where customer_id = ?"
+                    oCommand1.Parameters.Add("CustomerID", OleDbType.Integer, 10)
+                    oCommand1.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
+                    oCommand1.Prepare()
+                    iNumRows2 = oCommand1.ExecuteNonQuery()
+
+                    If iNumRows2 > 0 Then
+                        Debug.Print("The record was deleted")
+                        MessageBox.Show("Customer information was deleted.")
+                    End If
+                Catch ex As Exception
+                    Debug.Print("ERROR: " & ex.Message)
+                    MessageBox.Show("There is an error.The record was not deleted.Please check again")
+                End Try
+            End If
+
+        Catch ex As Exception
+            Debug.Print("ERROR: " & ex.Message)
+            MessageBox.Show("There is an error.The record was not deleted.Please check again")
+        Finally
+            oConnection.Close()
+
+        End Try
+
+        Return iNumRows2
+    End Function
+
+    '------------------ FIND DATA FUNCTIONS TO POPULATE FORM------------------------------
     'find all customer info to populate data for gridview
     Public Function populateGridView() As DataSet
 
@@ -152,6 +222,7 @@ Public Class CustomerController
         'Dim name = keyword
         sCmdText = "Select customer_id, firstname, lastname, gender,dob, email,phone FROM customer "
         sCmdText += "where firstname like '" & name & "%'"
+        sCmdText += "or customer_id like '" & name & "%'"
         sCmdText += "or lastname like '" & name & "%'"
         sCmdText += "or email like '" & name & "%'"
         sCmdText += "or phone like '" & name & "%'"
@@ -319,72 +390,5 @@ Public Class CustomerController
 
     End Function
 
-    'delete customer profiles
-    Public Function delete(ByVal htData As Hashtable) As Integer
-        Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
-        Dim iNumRows As Integer
-        Dim iNumRows2 As Integer
-
-        Try
-            Debug.Print("Connection string: " & oConnection.ConnectionString)
-            oConnection.Open()
-
-            'from invoice table, delete all booking records having that customer info
-            Dim oCommand2 As OleDbCommand = New OleDbCommand
-            oCommand2.Connection = oConnection
-
-            oCommand2.CommandText = "delete invoice.* from invoice inner join booking on invoice.booking_id = booking.booking_id where invoice.booking_id in (select booking_id from booking where customer_id=?)"
-
-            oCommand2.Parameters.Add("CustomerID", OleDbType.Integer, 10)
-            oCommand2.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
-            oCommand2.Prepare()
-            Debug.Print(oCommand2.CommandText)
-            oCommand2.Prepare()
-            oCommand2.ExecuteNonQuery()
-
-            'delete records on booking table having that customer_id
-            Dim oCommand As OleDbCommand = New OleDbCommand
-            oCommand.Connection = oConnection
-
-            oCommand.CommandText = "delete from booking where customer_id = ?"
-            oCommand.Parameters.Add("CustomerID", OleDbType.Integer, 10)
-            oCommand.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
-
-            oCommand.Prepare()
-            iNumRows = oCommand.ExecuteNonQuery()
-            Debug.Print(CStr(iNumRows))
-
-            If iNumRows >= 0 Then
-                Try
-                    Dim oCommand1 As OleDbCommand = New OleDbCommand
-                    oCommand1.Connection = oConnection
-
-                    'delete customer on customer database
-                    oCommand1.CommandText = "delete from customer where customer_id = ?"
-                    oCommand1.Parameters.Add("CustomerID", OleDbType.Integer, 10)
-                    oCommand1.Parameters("CustomerID").Value = CInt(htData("CustomerID"))
-                    oCommand1.Prepare()
-                    iNumRows = oCommand1.ExecuteNonQuery()
-
-                    If iNumRows2 > 0 Then
-                        Debug.Print("The record was deleted")
-                        MessageBox.Show("Customer information was deleted.")
-                    End If
-                Catch ex As Exception
-                    Debug.Print("ERROR: " & ex.Message)
-                    MessageBox.Show("There is an error.The record was not deleted.Please check again")
-                End Try
-            End If
-
-        Catch ex As Exception
-            Debug.Print("ERROR: " & ex.Message)
-            MessageBox.Show("There is an error.The record was not deleted.Please check again")
-        Finally
-            oConnection.Close()
-
-        End Try
-
-        Return iNumRows
-    End Function
 End Class
 
