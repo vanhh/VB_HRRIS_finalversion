@@ -88,6 +88,8 @@ Partial Class frmReport
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnReport6 = New System.Windows.Forms.Button()
         Me.tabCBReport01 = New System.Windows.Forms.TabPage()
+        Me.errorCBRM = New System.Windows.Forms.PictureBox()
+        Me.errorCBRY = New System.Windows.Forms.PictureBox()
         Me.txtYearCBR = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cbMonthCBR = New System.Windows.Forms.ComboBox()
@@ -111,8 +113,6 @@ Partial Class frmReport
         Me.InvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.errorCBRY = New System.Windows.Forms.PictureBox()
-        Me.errorCBRM = New System.Windows.Forms.PictureBox()
         Me.TC_Report.SuspendLayout()
         Me.tabCusBook.SuspendLayout()
         CType(Me.error01, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,10 +133,10 @@ Partial Class frmReport
         CType(Me.errorM06, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.errorY06, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabCBReport01.SuspendLayout()
+        CType(Me.errorCBRM, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.errorCBRY, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabInvoice.SuspendLayout()
         Me.BookingStrip.SuspendLayout()
-        CType(Me.errorCBRY, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.errorCBRM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TC_Report
@@ -201,7 +201,7 @@ Partial Class frmReport
         Me.btnReport01.Location = New System.Drawing.Point(280, 161)
         Me.btnReport01.Name = "btnReport01"
         Me.btnReport01.Size = New System.Drawing.Size(170, 25)
-        Me.btnReport01.TabIndex = 16
+        Me.btnReport01.TabIndex = 4
         Me.btnReport01.Text = "Generate Report"
         Me.btnReport01.UseVisualStyleBackColor = True
         '
@@ -212,7 +212,7 @@ Partial Class frmReport
         Me.cbCustomerID01.Location = New System.Drawing.Point(142, 105)
         Me.cbCustomerID01.Name = "cbCustomerID01"
         Me.cbCustomerID01.Size = New System.Drawing.Size(120, 21)
-        Me.cbCustomerID01.TabIndex = 5
+        Me.cbCustomerID01.TabIndex = 1
         '
         'txtLN
         '
@@ -220,7 +220,7 @@ Partial Class frmReport
         Me.txtLN.Location = New System.Drawing.Point(465, 106)
         Me.txtLN.Name = "txtLN"
         Me.txtLN.Size = New System.Drawing.Size(120, 20)
-        Me.txtLN.TabIndex = 4
+        Me.txtLN.TabIndex = 3
         '
         'txtFN
         '
@@ -228,7 +228,7 @@ Partial Class frmReport
         Me.txtFN.Location = New System.Drawing.Point(306, 106)
         Me.txtFN.Name = "txtFN"
         Me.txtFN.Size = New System.Drawing.Size(120, 20)
-        Me.txtFN.TabIndex = 3
+        Me.txtFN.TabIndex = 2
         '
         'lbFirstName
         '
@@ -302,7 +302,7 @@ Partial Class frmReport
         Me.txtRoomID.Location = New System.Drawing.Point(431, 104)
         Me.txtRoomID.Name = "txtRoomID"
         Me.txtRoomID.Size = New System.Drawing.Size(120, 20)
-        Me.txtRoomID.TabIndex = 10
+        Me.txtRoomID.TabIndex = 2
         '
         'lbRoomID
         '
@@ -320,7 +320,7 @@ Partial Class frmReport
         Me.cbRoom02.Location = New System.Drawing.Point(186, 103)
         Me.cbRoom02.Name = "cbRoom02"
         Me.cbRoom02.Size = New System.Drawing.Size(120, 21)
-        Me.cbRoom02.TabIndex = 8
+        Me.cbRoom02.TabIndex = 1
         '
         'lblRoomNumber
         '
@@ -336,7 +336,7 @@ Partial Class frmReport
         Me.btnReport02.Location = New System.Drawing.Point(288, 150)
         Me.btnReport02.Name = "btnReport02"
         Me.btnReport02.Size = New System.Drawing.Size(170, 25)
-        Me.btnReport02.TabIndex = 6
+        Me.btnReport02.TabIndex = 3
         Me.btnReport02.Text = "Generate Report"
         Me.btnReport02.UseVisualStyleBackColor = True
         '
@@ -412,7 +412,7 @@ Partial Class frmReport
         Me.txtYear03.Location = New System.Drawing.Point(322, 147)
         Me.txtYear03.Name = "txtYear03"
         Me.txtYear03.Size = New System.Drawing.Size(120, 20)
-        Me.txtYear03.TabIndex = 27
+        Me.txtYear03.TabIndex = 3
         '
         'cbMonth03
         '
@@ -422,7 +422,7 @@ Partial Class frmReport
         Me.cbMonth03.Location = New System.Drawing.Point(150, 147)
         Me.cbMonth03.Name = "cbMonth03"
         Me.cbMonth03.Size = New System.Drawing.Size(120, 21)
-        Me.cbMonth03.TabIndex = 24
+        Me.cbMonth03.TabIndex = 2
         '
         'lbYear03
         '
@@ -447,7 +447,7 @@ Partial Class frmReport
         Me.btnReport03.Location = New System.Drawing.Point(302, 187)
         Me.btnReport03.Name = "btnReport03"
         Me.btnReport03.Size = New System.Drawing.Size(170, 25)
-        Me.btnReport03.TabIndex = 23
+        Me.btnReport03.TabIndex = 4
         Me.btnReport03.Text = "Generate Report"
         Me.btnReport03.UseVisualStyleBackColor = True
         '
@@ -458,7 +458,7 @@ Partial Class frmReport
         Me.cbCusID03.Location = New System.Drawing.Point(150, 80)
         Me.cbCusID03.Name = "cbCusID03"
         Me.cbCusID03.Size = New System.Drawing.Size(120, 21)
-        Me.cbCusID03.TabIndex = 22
+        Me.cbCusID03.TabIndex = 1
         '
         'txtLN03
         '
@@ -466,7 +466,7 @@ Partial Class frmReport
         Me.txtLN03.Location = New System.Drawing.Point(490, 81)
         Me.txtLN03.Name = "txtLN03"
         Me.txtLN03.Size = New System.Drawing.Size(120, 20)
-        Me.txtLN03.TabIndex = 21
+        Me.txtLN03.TabIndex = 0
         '
         'txtFN03
         '
@@ -474,7 +474,7 @@ Partial Class frmReport
         Me.txtFN03.Location = New System.Drawing.Point(322, 81)
         Me.txtFN03.Name = "txtFN03"
         Me.txtFN03.Size = New System.Drawing.Size(120, 20)
-        Me.txtFN03.TabIndex = 20
+        Me.txtFN03.TabIndex = 0
         '
         'lbFN03
         '
@@ -546,7 +546,7 @@ Partial Class frmReport
         Me.txtYear04.Location = New System.Drawing.Point(437, 97)
         Me.txtYear04.Name = "txtYear04"
         Me.txtYear04.Size = New System.Drawing.Size(120, 20)
-        Me.txtYear04.TabIndex = 56
+        Me.txtYear04.TabIndex = 2
         '
         'Label5
         '
@@ -568,7 +568,7 @@ Partial Class frmReport
         Me.cbMonth04.Location = New System.Drawing.Point(199, 97)
         Me.cbMonth04.Name = "cbMonth04"
         Me.cbMonth04.Size = New System.Drawing.Size(120, 21)
-        Me.cbMonth04.TabIndex = 16
+        Me.cbMonth04.TabIndex = 1
         '
         'lbYear04
         '
@@ -593,7 +593,7 @@ Partial Class frmReport
         Me.btnReport04.Location = New System.Drawing.Point(290, 153)
         Me.btnReport04.Name = "btnReport04"
         Me.btnReport04.Size = New System.Drawing.Size(170, 25)
-        Me.btnReport04.TabIndex = 15
+        Me.btnReport04.TabIndex = 3
         Me.btnReport04.Text = "Generate Report"
         Me.btnReport04.UseVisualStyleBackColor = True
         '
@@ -640,7 +640,7 @@ Partial Class frmReport
         Me.txtYear05.Location = New System.Drawing.Point(451, 99)
         Me.txtYear05.Name = "txtYear05"
         Me.txtYear05.Size = New System.Drawing.Size(120, 20)
-        Me.txtYear05.TabIndex = 57
+        Me.txtYear05.TabIndex = 2
         '
         'Label6
         '
@@ -662,7 +662,7 @@ Partial Class frmReport
         Me.cbMonth05.Location = New System.Drawing.Point(205, 99)
         Me.cbMonth05.Name = "cbMonth05"
         Me.cbMonth05.Size = New System.Drawing.Size(120, 21)
-        Me.cbMonth05.TabIndex = 29
+        Me.cbMonth05.TabIndex = 1
         '
         'lbYear05
         '
@@ -687,7 +687,7 @@ Partial Class frmReport
         Me.btnReport05.Location = New System.Drawing.Point(298, 152)
         Me.btnReport05.Name = "btnReport05"
         Me.btnReport05.Size = New System.Drawing.Size(170, 25)
-        Me.btnReport05.TabIndex = 28
+        Me.btnReport05.TabIndex = 3
         Me.btnReport05.Text = "Generate Report"
         Me.btnReport05.UseVisualStyleBackColor = True
         '
@@ -747,7 +747,7 @@ Partial Class frmReport
         Me.txtYear06.Location = New System.Drawing.Point(487, 105)
         Me.txtYear06.Name = "txtYear06"
         Me.txtYear06.Size = New System.Drawing.Size(120, 20)
-        Me.txtYear06.TabIndex = 57
+        Me.txtYear06.TabIndex = 3
         '
         'Label7
         '
@@ -777,7 +777,7 @@ Partial Class frmReport
         Me.cbRoom06.Location = New System.Drawing.Point(134, 105)
         Me.cbRoom06.Name = "cbRoom06"
         Me.cbRoom06.Size = New System.Drawing.Size(120, 21)
-        Me.cbRoom06.TabIndex = 15
+        Me.cbRoom06.TabIndex = 1
         '
         'cbMonth06
         '
@@ -787,7 +787,7 @@ Partial Class frmReport
         Me.cbMonth06.Location = New System.Drawing.Point(323, 105)
         Me.cbMonth06.Name = "cbMonth06"
         Me.cbMonth06.Size = New System.Drawing.Size(120, 21)
-        Me.cbMonth06.TabIndex = 11
+        Me.cbMonth06.TabIndex = 2
         '
         'Label1
         '
@@ -812,7 +812,7 @@ Partial Class frmReport
         Me.btnReport6.Location = New System.Drawing.Point(305, 166)
         Me.btnReport6.Name = "btnReport6"
         Me.btnReport6.Size = New System.Drawing.Size(170, 25)
-        Me.btnReport6.TabIndex = 10
+        Me.btnReport6.TabIndex = 4
         Me.btnReport6.Text = "Generate Report"
         Me.btnReport6.UseVisualStyleBackColor = True
         '
@@ -834,12 +834,32 @@ Partial Class frmReport
         Me.tabCBReport01.Text = "CBR Bookings"
         Me.tabCBReport01.UseVisualStyleBackColor = True
         '
+        'errorCBRM
+        '
+        Me.errorCBRM.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorCBRM.Location = New System.Drawing.Point(303, 93)
+        Me.errorCBRM.Name = "errorCBRM"
+        Me.errorCBRM.Size = New System.Drawing.Size(20, 20)
+        Me.errorCBRM.TabIndex = 63
+        Me.errorCBRM.TabStop = False
+        Me.errorCBRM.Visible = False
+        '
+        'errorCBRY
+        '
+        Me.errorCBRY.Image = Global.HRRIS.My.Resources.Resources.error_icon
+        Me.errorCBRY.Location = New System.Drawing.Point(558, 94)
+        Me.errorCBRY.Name = "errorCBRY"
+        Me.errorCBRY.Size = New System.Drawing.Size(20, 20)
+        Me.errorCBRY.TabIndex = 62
+        Me.errorCBRY.TabStop = False
+        Me.errorCBRY.Visible = False
+        '
         'txtYearCBR
         '
         Me.txtYearCBR.Location = New System.Drawing.Point(421, 94)
         Me.txtYearCBR.Name = "txtYearCBR"
         Me.txtYearCBR.Size = New System.Drawing.Size(120, 20)
-        Me.txtYearCBR.TabIndex = 57
+        Me.txtYearCBR.TabIndex = 2
         '
         'Label8
         '
@@ -861,7 +881,7 @@ Partial Class frmReport
         Me.cbMonthCBR.Location = New System.Drawing.Point(177, 93)
         Me.cbMonthCBR.Name = "cbMonthCBR"
         Me.cbMonthCBR.Size = New System.Drawing.Size(120, 21)
-        Me.cbMonthCBR.TabIndex = 11
+        Me.cbMonthCBR.TabIndex = 1
         '
         'lbYearCBR
         '
@@ -886,7 +906,7 @@ Partial Class frmReport
         Me.btnReportCBR.Location = New System.Drawing.Point(277, 143)
         Me.btnReportCBR.Name = "btnReportCBR"
         Me.btnReportCBR.Size = New System.Drawing.Size(170, 25)
-        Me.btnReportCBR.TabIndex = 10
+        Me.btnReportCBR.TabIndex = 3
         Me.btnReportCBR.Text = "Generate Report"
         Me.btnReportCBR.UseVisualStyleBackColor = True
         '
@@ -908,7 +928,7 @@ Partial Class frmReport
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.Label9.Location = New System.Drawing.Point(243, 24)
+        Me.Label9.Location = New System.Drawing.Point(271, 38)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(201, 20)
         Me.Label9.TabIndex = 60
@@ -916,10 +936,10 @@ Partial Class frmReport
         '
         'btnInvoice
         '
-        Me.btnInvoice.Location = New System.Drawing.Point(247, 108)
+        Me.btnInvoice.Location = New System.Drawing.Point(288, 102)
         Me.btnInvoice.Name = "btnInvoice"
         Me.btnInvoice.Size = New System.Drawing.Size(170, 25)
-        Me.btnInvoice.TabIndex = 57
+        Me.btnInvoice.TabIndex = 4
         Me.btnInvoice.Text = "Generate Report"
         Me.btnInvoice.UseVisualStyleBackColor = True
         '
@@ -1024,26 +1044,6 @@ Partial Class frmReport
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
         '
-        'errorCBRY
-        '
-        Me.errorCBRY.Image = Global.HRRIS.My.Resources.Resources.error_icon
-        Me.errorCBRY.Location = New System.Drawing.Point(558, 94)
-        Me.errorCBRY.Name = "errorCBRY"
-        Me.errorCBRY.Size = New System.Drawing.Size(20, 20)
-        Me.errorCBRY.TabIndex = 62
-        Me.errorCBRY.TabStop = False
-        Me.errorCBRY.Visible = False
-        '
-        'errorCBRM
-        '
-        Me.errorCBRM.Image = Global.HRRIS.My.Resources.Resources.error_icon
-        Me.errorCBRM.Location = New System.Drawing.Point(303, 93)
-        Me.errorCBRM.Name = "errorCBRM"
-        Me.errorCBRM.Size = New System.Drawing.Size(20, 20)
-        Me.errorCBRM.TabIndex = 63
-        Me.errorCBRM.TabStop = False
-        Me.errorCBRM.Visible = False
-        '
         'frmReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1082,12 +1082,12 @@ Partial Class frmReport
         CType(Me.errorY06, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabCBReport01.ResumeLayout(False)
         Me.tabCBReport01.PerformLayout()
+        CType(Me.errorCBRM, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.errorCBRY, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabInvoice.ResumeLayout(False)
         Me.tabInvoice.PerformLayout()
         Me.BookingStrip.ResumeLayout(False)
         Me.BookingStrip.PerformLayout()
-        CType(Me.errorCBRY, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.errorCBRM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
