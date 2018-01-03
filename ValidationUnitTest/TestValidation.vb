@@ -38,6 +38,13 @@ Public Class TestValidation
     End Sub
 
     <TestMethod()>
+    Public Sub TestisNumeric_02a()
+        Dim oValidation As New HRRIS.Validation
+        Dim strNumeric = "@@$@##%^%"
+        Assert.AreEqual(False, oValidation.isNumericVal(strNumeric))
+    End Sub
+
+    <TestMethod()>
     Public Sub TestisNumeric_03()
         Dim oValidation As New HRRIS.Validation
         Dim sAlphaNum = "RMIT 702 Nguyen Van Linh"
@@ -57,6 +64,20 @@ Public Class TestValidation
         Dim oValidation As New HRRIS.Validation
         Dim sAlphaNum = "RMIT Nguyen Van Linh"
         Assert.AreEqual(True, oValidation.isAlphaNumericVal(sAlphaNum))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TestisAlphaNum_02a()
+        Dim oValidation As New HRRIS.Validation
+        Dim sAlphaNum = "13243567"
+        Assert.AreEqual(True, oValidation.isAlphaNumericVal(sAlphaNum))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TestisAlphaNum_02b()
+        Dim oValidation As New HRRIS.Validation
+        Dim sAlphaNum = "afa$%^&"
+        Assert.AreEqual(False, oValidation.isAlphaNumericVal(sAlphaNum))
     End Sub
 
     'test email
@@ -95,6 +116,12 @@ Public Class TestValidation
         Assert.AreEqual(False, oValidation.isAlphaVal(sAlpha))
     End Sub
 
+    Public Sub TestIsAlpha_02a()
+        Dim oValidation As New HRRIS.Validation
+        Dim sAlpha = "$#%$^%&%6"
+        Assert.AreEqual(False, oValidation.isAlphaVal(sAlpha))
+    End Sub
+
     'test empty
     <TestMethod()>
     Public Sub TestEmpty_01()
@@ -109,4 +136,24 @@ Public Class TestValidation
         Assert.AreEqual(True, oValidation.isEmpty(sEmpty))
     End Sub
 
+    <TestMethod()>
+    Public Sub TestEmpty_02a()
+        Dim oValidation As New HRRIS.Validation
+        Dim sEmpty = "    "
+        Assert.AreEqual(False, oValidation.isEmpty(sEmpty))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TestEmpty_02b()
+        Dim oValidation As New HRRIS.Validation
+        Dim sEmpty = " afsfd "
+        Assert.AreEqual(True, oValidation.isEmpty(sEmpty))
+    End Sub
+
+    <TestMethod()>
+    Public Sub TestEmpty_02c()
+        Dim oValidation As New HRRIS.Validation
+        Dim sEmpty = " "
+        Assert.AreEqual(False, oValidation.isEmpty(sEmpty))
+    End Sub
 End Class

@@ -42,8 +42,15 @@ Public Class Validation
         If String.IsNullOrEmpty(strVal) Then
             Return False
         Else
-            Return True
+            If String.IsNullOrWhiteSpace(strVal) Then
+
+                Return False
+
+            Else
+                Return True
+            End If
         End If
+
 
     End Function
 
