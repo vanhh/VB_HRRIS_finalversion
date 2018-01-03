@@ -30,3 +30,7 @@ F:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\s3557184-Assignment
 F:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\HRRIS.exe
 F:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\HRRIS.xml
 F:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\HRRIS.pdb
+E:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\bin\Debug\HRRIS.exe.config
+E:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\HRRIS.exe
+E:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\HRRIS.xml
+E:\VB HRRISS\s3557184-Assignment02-HRRIS\HRRIS\obj\x86\Debug\HRRIS.pdb
