@@ -145,6 +145,7 @@ Public Class BookingController
         Return iNumRows
     End Function
 
+    '-------------------------- FIND FUNCTIONS --------------------------------------
     'find all type of room type to display on form when load
     Public Function findAllType() As List(Of Hashtable)
 
@@ -246,6 +247,7 @@ Public Class BookingController
 
     End Function
 
+    'find room info to display on the form
     Public Function findbyRoomNo(RoomNo As String) As List(Of Hashtable)
 
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -386,6 +388,7 @@ Public Class BookingController
 
     End Function
 
+    'find booking based on the input query
     Public Function findbyFNorID(keyword As String) As List(Of Hashtable)
 
         Dim oConnection As OleDbConnection = New OleDbConnection(CONNECTION_STRING)
@@ -443,7 +446,6 @@ Public Class BookingController
         Return lsData
 
     End Function
-
 
     'get the booking details and return as hashtable
     Public Function getBookingInfo(ID As String) As List(Of Hashtable)
