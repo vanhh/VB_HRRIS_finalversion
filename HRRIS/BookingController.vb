@@ -10,6 +10,7 @@ Imports System.Data.OleDb
 Public Class BookingController
     Public Const CONNECTION_STRING As String =
    "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=HRRIS_DB.accdb"
+    '----------------------------- CUD functions ------------------------------------------
 
     'insert booking to the database
     Public Function insert(ByVal htData As Hashtable) As Integer

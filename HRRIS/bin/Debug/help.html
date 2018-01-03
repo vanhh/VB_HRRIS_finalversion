@@ -110,8 +110,8 @@
 
       <h2>Algorithm</h2>
       <h3>Inserting a record in the booking table</h3>
-      <p> Once user finishes selecting room type, checkin and chekout date, the application will search database for available rooms that suit user's needs. The room list is shown as a dropdown so that user can choose easily. When a particular room is chosen, based on the room number,the application will automatically get the price as well as calculate total price as display it on the screen. 
-      When user click Insert, the application will start checking all the fields firstly. For instance, room number and customer cannot be empty. Number of guests must be numeric value and in the allowed range for each room type. If all fields are valid, the applicatin will insert to database the given input. Otherwise,error tooltips with message will be shown to alert user about their error and let them correct.</p>
+      <p> Once user finishes selecting room type, checkin and chekout date, the application will search database for available rooms that suit user's needs. The room list is shown as a dropdown so that user can choose easily. When a particular room is chosen, based on the room number,the application will automatically get the price as well as calculate total price as display it on the screen (function in Booking Controller). If there is no room avalabile, a message box will show up to let user know. </br>
+      When user click Insert, the application will start checking all the fields firstly (Validation class). For instance, room number and customer id cannot be empty. Number of guests must be numeric value and in the allowed range for each room type. If all fields are valid, the applicatin will insert to database with the given input. Otherwise,error tooltips with message will be shown to alert user about their error and let them correct.</p>
       <h2>Struture Chart</h2>
       <figure>
             <img src="image/13.png" height="300" >
